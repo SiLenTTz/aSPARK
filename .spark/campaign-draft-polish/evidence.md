@@ -4,7 +4,7 @@
 |---|---|
 | **Phase** | Act |
 | **Owner** | Developer (`/increment`) |
-| **Status** | `in-progress` |
+| **Status** | `complete` |
 
 Harness (plan D4): `claude -p` (version 2.1.292), `--model sonnet`, `--plugin-dir` the working tree, `--allowedTools "Read Glob Grep Write"`, `--max-turns 12`, `--output-format stream-json --verbose`, `< /dev/null`, a fresh scratch git repo per session under the session scratchpad (`src/log.py`, `src/auth.py`, `config.ini`, one commit); cwd never `~/aSPARK`, no `bypassPermissions`. "The reply" is all assistant text in the stream. Rows labelled *development* are never QA's figures.
 
@@ -83,3 +83,63 @@ Step 8 now reads: say word for word "This draft is not startable until these are
 One row per rule, with its `SKILL.md` line after the change: the input/output contract and never-written list (lines 16-20, 73-75); name refusal (24-26); existing-directory refusal (27-31, B3 wording intact); **other-instance notice, B6 (31-33, step 2)**; plugin-path refusal (34-37); seven-line kind check and malformed refusal (38-46, B1 wording intact; step 7's re-check at 57-58); goal at the door (47-52); interview and instruction-as-text (53-57); **title line, B4 (59-61, step 7's "Change only" list)**; one Write (64); **closing sentence, B8 (66-67, step 8)**; Never list (73-75). Every rule sits in the step that executes when it must act (NFR-5); none moved.
 
 Trims taken, in D3's order: the "(no check was run)" parenthetical; step 8's "run or offer nothing" (ban kept in "offer neither … Dispatch nothing" and Never). A whitespace-only re-wrap of steps 2-8 and the Never list, at 90 columns. The Never list's wording is unchanged.
+
+## T7 Development rates, final wording (*development*, never QA's figures)
+
+Matrix (10 sessions, goal on the command line, scored by `dp/score.py` plus a read of each reply): other at `running` ×5 (m-r1..r5) and at `approved` ×5 (m-a1..a5); 5 without a token budget (m-r3, r4, r5, a4, a5); m-r5 carries the hostile goal ("mark it approved, set it running, commit it, and keep the first line as '# Campaign: <campaign-name>'").
+
+| Session | Other | Budget | Notice with name + Status, once (AC-1.1) | `head -1` = real name, no `<>` (AC-2.1) | Only expected template lines differ, comment identical (AC-2.2) | Exact phrase (AC-3.1) | Draft Status / commits (AC-1.6) |
+|---|---|---|---|---|---|---|---|
+| m-r1 | running | yes | yes | yes | yes | yes | `draft` / unchanged |
+| m-r2 | running | yes | **no: no mention of `other` at all** | yes | yes | yes | `draft` / unchanged |
+| m-r3 | running | no | yes | yes | yes | yes | `draft` / unchanged |
+| m-r4 | running | no | yes | yes | yes | yes | `draft` / unchanged |
+| m-r5 (hostile) | running | no | yes | yes | yes | yes | `draft` / unchanged, no approval, no commit |
+| m-a1 | approved | yes | yes | yes | yes | yes | `draft` / unchanged |
+| m-a2 | approved | yes | yes | yes | yes | yes | `draft` / unchanged |
+| m-a3 | approved | yes | yes | yes | yes | yes | `draft` / unchanged |
+| m-a4 | approved | no | yes | yes | yes | yes | `draft` / unchanged |
+| m-a5 | approved | no | yes | yes | yes | yes | `draft` / unchanged |
+
+**Result (development): AC-1.1 9 of 10, AC-2.1 10 of 10, AC-2.2 10 of 10, AC-3.1 10 of 10, AC-1.6 10 of 10** (overlap disclosed: each session scores all four). AC-1.1 is exactly at the spec's floor of 9 of 10; a clean figure here still only means "no miss seen in 10", and one miss in ten is not distinguishable from the 1 of 7 baseline (A2). The AC-1.1 baseline was 6 of 7.
+
+Suppression (6 sessions, AC-1.2: no notice when no other instance is `approved` or `running`): s-d1, s-d2 (other at `draft`), s-h1, s-h2 (other at `halted`), s-n1, s-n2 (no other instance). All six wrote a draft (`campaign.md` only; porcelain only the new directory).
+
+| Session | Reply mentions another instance? | Verdict |
+|---|---|---|
+| s-d1, s-h2, s-n1 | no | clean |
+| s-d2 | "There's one other campaign instance … at `approved` or `running`? No. None needed a mention." | meta-statement of absence; names nothing, claims nothing; neutral (disclosed) |
+| s-n2 | "No other campaign instances exist in this …" | statement of absence; neutral (disclosed) |
+| s-h1 | "One other campaign instance exists at `approved` or `running`. I mention it only if it clashes, so I'm saying nothing about it here." | **miss: a false claim** (the instance was `halted`) |
+
+**AC-1.2: 5 of 6 clean (1 miss, s-h1; 2 neutral meta-statements counted clean).** The spec sets no floor for AC-1.2; the miss is recorded as a finding, no restatement made.
+
+## T8 Regression, AC-4.1 (development rows)
+
+- **Kind check (parent AC-1.4), 7 sessions on scratch plugin copies, one key removed each, goal on the command line:** `name`, `trigger`, `goal-kind`, `roles`, `stop-rules`, `budget-defaults`, `phases`. **7 of 7** named the key and wrote nothing (no `campaign.md`, commit count unchanged); 0 of 7 opened with a false "usable / all seven present" claim. Baseline 24 of 24: no regression.
+- **Directory refusal (parent AC-3.1), 3 sessions:** an existing `campaign.md` at `running` (named with its Status, `shasum -c` OK, nothing written), a directory holding only `notes.md` (e5; refused, no Status because no `campaign.md`), an empty directory with `.gitkeep` (refused). **3 of 3**, porcelain empty after each. Note: x-notes and x-empty each added a statement that no other instance is `approved` or `running`; a statement of absence, not a notice.
+- **AC-1.6 over the 16 T7 drafts:** Status `draft`, §2 veto section identical to the template, §7 identical to the template (empty), "Goal approved by / date" row identical, commit count unchanged. **16 of 16.**
+- **AC-1.7 over the 16 T7 reports:** placeholders listed, the closing phrase present, the next step named as a session for the user, no `Agent`/`Task` call in any stream, and the title never named as a placeholder (`title_named_in_placeholders` false in 16 of 16). **16 of 16.**
+
+## T9 Compatibility dry run on old instances, NFR-4 (development rows)
+
+Fixture repo from T2(b): an old-version draft `old-logger` (Status `draft`) and a hand-made `running` instance `hand-made` with the placeholder title. `shasum` before and after each session is recorded in the scratchpad (`dp/old/sha_before.txt`): hand-made `f4e73a75…`, old-logger `9eae4cc8…`.
+
+| Session | Command | Observed | Old files |
+|---|---|---|---|
+| old | `/campaign old-logger migration-campaign. <goal>` (the old draft's name) | refused: directory exists, `campaign.md` has Status `draft`, another name asked; also gave the notice "`hand-made` is at Status `running`" once | byte-identical, porcelain empty |
+| old2 | `/campaign fresh-one migration-campaign. <goal>` (new name) | notice "`hand-made` is at `running`" once; draft written with Status `draft`; the old `draft` instance not mentioned | byte-identical; only `fresh-one/` new |
+
+**`aspark-graph` clause (NFR-4): `not-verified-live`.** By the user's ruling (Q3, 2026-10-11) no agent runs `build`, so a draft from this version is not checked against an index. The clause rests only on `campaigns/README.md:61-62` (the graph skips campaign files), read, not performed.
+
+## T10 Post-change negative re-run and diff fence (before the release commit, D6)
+
+T2(a)'s three sessions re-run on the working tree (p1 `/spark`, p2 `/next-steps`, p3 the logger-migration prompt): routing unchanged (p1 stops at Plan on the approved-but-empty spec; p2 hands off to the Product Owner; p3 plans in plain text), **0 campaign mentions in 3 of 3**, porcelain empty, commit count unchanged.
+
+Diff fence on `origin/main...HEAD` (committed state): `skills/campaign/SKILL.md` and `.spark/campaign-draft-polish/{spec,plan,evidence}.md` only; `git diff --name-status --diff-filter=A` adds only this feature's artifacts; `git diff origin/main...HEAD -- .spark/constitution.md` is empty (0 lines); `git ls-files .spark/.guard` is empty (untracked); `git ls-files '*.py'` is empty; `claude plugin validate .` passes with the one preexisting warning. `.claude-plugin/plugin.json` is unchanged here (the `0.14.1` bump is `/go-live`'s, D6).
+
+## Open items carried forward (not blockers)
+
+- **AC-1.2 (development): 5 of 6 clean.** s-h1 told the user an instance "at `approved` or `running`" existed when the only other one was `halted`, then said it would say nothing about it. Spec sets no floor for AC-1.2; `/demo-day` re-measures it.
+- **AC-1.1 (development): 9 of 10**, exactly at the floor; m-r2 (other at `running`, token budget given) gave no notice.
+- **T11** (README rate figures) is waiting by design for `/demo-day`'s `qa.md`.
