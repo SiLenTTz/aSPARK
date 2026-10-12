@@ -143,3 +143,7 @@ Diff fence on `origin/main...HEAD` (committed state): `skills/campaign/SKILL.md`
 - **AC-1.2 (development): 5 of 6 clean.** s-h1 told the user an instance "at `approved` or `running`" existed when the only other one was `halted`, then said it would say nothing about it. Spec sets no floor for AC-1.2; `/demo-day` re-measures it.
 - **AC-1.1 (development): 9 of 10**, exactly at the floor; m-r2 (other at `running`, token budget given) gave no notice.
 - **T11** (README rate figures) is waiting by design for `/demo-day`'s `qa.md`.
+
+## T11 README rate figures from QA (after `/demo-day` round 1, `/increment` fix-mode)
+
+`campaigns/README.md:48`: "the draft state held 5 of 5" now reads "… 5 of 5, and 38 of 38 at the `campaign-draft-polish` QA" (qa.md: AC-1.6, 38 of 38 drafts). `git diff -U0` shows that one changed figure on one line; "Best effort, not a guarantee" remains; no word says fixed, guaranteed or always. Per user ruling Q2 no new clause or rate was added: this feature's AC-1.1 (9 of 10 registered, 17 of 20 pooled), AC-2.1 and AC-3.1 rates are in `qa.md` and the release notes only. `:22` (kind check, 24 of 24 at campaign-start round 2) and the existing-instance sentence at `:48` (parked, stale) are untouched; this QA's kind-check figure (7 of 7) is in `qa.md`.
