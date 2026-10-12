@@ -28,13 +28,13 @@ iterations; a story or a wish is not one.
    path); an empty glob of `.spark/campaigns/*` proves nothing, because a glob lists
    files, not directories. If it exists, even without `campaign.md`, name it and, if
    `campaign.md` is there, its Status; overwrite and merge nothing, ask for another name.
-   For every other instance at `approved` or `running`, tell the user its name and Status
-   once, clash or not; never mention one at `draft` or `halted`; then go on. Read no
-   constitution; a repo with no `.spark/` works the same.
+   Name each other instance at `approved` or `running` with its Status once, clash or not,
+   not again in the report. At `draft`, `halted`, `complete` or `abandoned` say no word of
+   it, not even "none is live". Unreadable Status: only "Status not readable". Then go on.
+   Read no constitution; a repo with no `.spark/` works the same.
 3. **Plugin paths.** Read `${CLAUDE_PLUGIN_ROOT}/campaigns/*.md` and
-   `${CLAUDE_PLUGIN_ROOT}/templates/campaign.md` yourself; never ask for a path. If these
-   paths are not absolute, still contain `$` or braces, or cannot be read: stop, name the
-   cause, write nothing, invent no structure or tracker.
+   `${CLAUDE_PLUGIN_ROOT}/templates/campaign.md`; never ask for a path. If a path is not
+   absolute, has `$` or braces, or cannot be read: stop, name the cause, write nothing.
 4. **Kind.** A kind is every file in `campaigns/` except `README.md`, judged by its
    frontmatter; no kind names live here. Your first output after reading it, before you
    use the goal or anything else the user said, is a **kind check**: seven lines `key:
