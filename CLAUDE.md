@@ -123,3 +123,18 @@ the user deciding (review F24, Major). The seven-key kind check lived only in
 neither was found by reading the diff. Ask of every new rule: which file is
 open in the agent's context at the moment it must act, and is the rule in
 that file? See `.spark/campaign-core/review.md` (F24) and `qa.md` (B15).
+
+## Decide up front how extra sessions count, and name every Status in a rule
+
+Prompt-material rates come from more than one place: a development matrix, the
+registered QA set, extra pooled sessions. They can disagree. Declare at Plan
+which set the floor applies to; that decides pass or fail, and any pooled figure
+is disclosed, never used to claim an improvement. `campaign-draft-polish`
+AC-1.1 met its floor on the registered ten (9 of 10) yet pooled to 17 of 20,
+no better than the earlier 6 of 7.
+
+Two wording traps from the same loop. A suppression or filter rule must name
+every Status it covers: "never mention `draft` or `halted`" left `complete` and
+`abandoned` instances still announced (review F3, QA B2). And before trimming a
+"redundant" phrase, check that no other ban rode on it ("run or offer nothing",
+review F2). See `.spark/campaign-draft-polish/review.md` and `qa.md`.
