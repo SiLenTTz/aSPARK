@@ -35,7 +35,7 @@ f4e73a7536ead378108fcf81a3a7aa356b93a431  .spark/campaigns/hand-made/campaign.md
 
 Step 2 now reads: "For every other instance at `approved` or `running`, tell the user its name and Status once, clash or not; never mention one at `draft` or `halted`; then go on." (the rule stays in step 2, the step where the agent acts.)
 
-**Line accounting (D3).** `wc -l` 75 → **74**. Two redundancies trimmed, each with its rule still stated: the parenthetical "(no check was run)" after the §2 veto record in step 7 (rule intact: "the §2 veto record blank"), and step 8's "run or offer nothing" (the same ban stands in step 8's "offer neither … Dispatch nothing" and the Never list's "run or resume a campaign"). Steps 2–8 and the Never list were re-wrapped to 90 columns, whitespace only (`git diff -w --word-diff` shows just the intended word changes). Not trimmed: the B1 kind-check wording (step 4, and step 7's "seven quoted lines") and the B3 directory wording (step 2's first three lines).
+**Line accounting (D3).** `wc -l` 75 → **74**. Two redundancies trimmed, each with its rule still stated: the parenthetical "(no check was run)" after the §2 veto record in step 7 (rule intact: "the §2 veto record blank"), and step 8's "run or offer nothing" (the same ban stands in step 8's "offer neither … Dispatch nothing" and the Never list's "run or resume a campaign"). Steps 1–8 and the Never list were re-wrapped to 90 columns, whitespace only (`git diff -w --word-diff` shows just the intended word changes). Not trimmed: the B1 kind-check wording (step 4, and step 7's "seven quoted lines") and the B3 directory wording (step 2's first three lines).
 
 | Session (development) | Scenario | Notice in reply | Draft written | Porcelain |
 |---|---|---|---|---|
@@ -80,9 +80,9 @@ Step 8 now reads: say word for word "This draft is not startable until these are
 | Lines 1-9 (frontmatter) | – | identical (`diff` empty) | argument, name, description, `disable-model-invocation` unchanged (NFR-3) |
 | `claude plugin validate .` | passes with 1 warning | passes with the same 1 warning (root `CLAUDE.md`, preexisting) | pass |
 
-One row per rule, with its `SKILL.md` line after the change: the input/output contract and never-written list (lines 16-20, 73-75); name refusal (24-26); existing-directory refusal (27-31, B3 wording intact); **other-instance notice, B6 (31-33, step 2)**; plugin-path refusal (34-37); seven-line kind check and malformed refusal (38-46, B1 wording intact; step 7's re-check at 57-58); goal at the door (47-52); interview and instruction-as-text (53-57); **title line, B4 (59-61, step 7's "Change only" list)**; one Write (64); **closing sentence, B8 (66-67, step 8)**; Never list (73-75). Every rule sits in the step that executes when it must act (NFR-5); none moved.
+One row per rule, with its `SKILL.md` line after the change: the input/output contract and never-written list (lines 16-20, 73-75); name refusal (24-26); existing-directory refusal (27-30, B3 wording intact); **other-instance notice, B6 (31-32, step 2)**; plugin-path refusal (34-37); seven-line kind check and malformed refusal (38-46, B1 wording intact; step 7's re-check at 57-58); goal at the door (47-51); interview and instruction-as-text (52-56); **title line, B4 (60-61, step 7's "Change only" list)**; one Write (64); **closing sentence, B8 (66, step 8)**; Never list (73-75). Every rule sits in the step that executes when it must act (NFR-5); none moved.
 
-Trims taken, in D3's order: the "(no check was run)" parenthetical; step 8's "run or offer nothing" (ban kept in "offer neither … Dispatch nothing" and Never). A whitespace-only re-wrap of steps 2-8 and the Never list, at 90 columns. The Never list's wording is unchanged.
+Trims taken, in D3's order: the "(no check was run)" parenthetical; step 8's "run or offer nothing" (ban kept in "offer neither … Dispatch nothing" and Never). A whitespace-only re-wrap of steps 1-8 and the Never list, at 90 columns. The Never list's wording is unchanged.
 
 ## T7 Development rates, final wording (*development*, never QA's figures)
 

@@ -11,7 +11,7 @@
 **Handoff**
 - **Status:** mirrors the header table above (authoritative for `Status`).
 - **Summary:** Three in-place rewordings of `skills/campaign/SKILL.md`, each at the step where the agent acts: the other-instance notice at step 2 (B6), the title line added to step 7's "change only" list (B4), the closing sentence made word-for-word at step 8 (B8). Net line count ≤ 75, paid for by trimming redundant wording, never a rule; if that is impossible the task stops for the user (C8). B6 goes first, end to end, as the walking skeleton. Rates are measured as n of m in fresh `claude -p` sessions; the README rate edit waits for QA's numbers.
-- **Open:** `11 tasks not done` (T1–T11 `todo`). No open questions: the user ruled on Q1–Q3 on 2026-10-11 (§5 User rulings).
+- **Open:** `1 task not done` (T1–T10 `done`; T11 `blocked` by design until `/demo-day`'s `qa.md`). No open questions: the user ruled on Q1–Q3 on 2026-10-11 (§5 User rulings).
 - **Binding ruling:** §3 Task Breakdown for current task status; a plan revision after review/QA findings updates §1/§3 in place, never a new section
 - **On conflict:** the numbered body below wins for everything except `Status`; log the mismatch as a finding at the next `/peer-review` and proceed — don't stop on it.
 
@@ -24,7 +24,7 @@
   - **B8 cause.** Step 8 quotes the sentence inside running prose ("say \"not startable…\""), so a paraphrase still reads as compliance (r-h2, `qa.md:80`).
   - **Width.** Most lines wrap at about 88 characters; `:59` is an outlier of about 133. NFR-1 counts lines, so lengthening lines would game it. D3 closes that loophole.
   - **Prompt material makes these likely, never certain (`CLAUDE.md`; spec NFR-2).** AC-1.1, AC-2.1 and AC-3.1 are best-effort by the spec. AC-1.2, AC-2.2 and AC-4.1 are also agent-followed behaviour. The spec sets no floor for them, so any miss there is recorded as a finding with its n of m. Structurally checkable: NFR-1, NFR-3, NFR-6, AC-4.2.
-  - **Branch.** `fix/campaign-draft-polish` is cut from `origin/main` `2ba7629` and carries only the spec commit `2411075`. `.spark/.guard/` is untracked in the working tree (aspark-guard's ledger). It must never be committed (AC-4.2), and §3/§6 make it a `/go-live` presence check.
+  - **Branch.** `fix/campaign-draft-polish` is cut from `origin/main` `771a1e2` and carries the spec commit `e86a1e4` (rebased; the earlier `2ba7629`/`2411075` are no longer on any branch). `.spark/.guard/` is untracked in the working tree (aspark-guard's ledger). It must never be committed (AC-4.2), and §3/§6 make it a `/go-live` presence check.
 - **Decision:**
   1. **D1 One file, three rewordings at the acting step (NFR-5).** No new step, no new section, no change to frontmatter (`:1-9`), argument, output file or the Never list's bans (NFR-3). Each rule is edited where it is executed:
      - **Step 2 (B6, AC-1.1/1.2).** Replace "If other instances are `approved` or `running`, say so once, then go on." with wording that has the same meaning, e.g.: *"For each other instance at `approved` or `running` (never `draft` or `halted`), tell the user its name and Status once, clash or not; then go on."* The rule must name the two parts (name **and** Status), the suppression, and "once".
@@ -175,4 +175,4 @@ Stories:
 
 - **T11 is `blocked` by design, not by a fault.** It cannot run before `/demo-day` has written the fresh n of m (D5, spec A4), so Act closes with T1-T10 `done` and `/spark` continues with `/peer-review` and `/demo-day`; T11 then runs in `/increment` fix-mode.
 - **Step 2's wording was restated twice at the same step (T3).** The first draft of the rule let the agent mention a `draft` instance; the final wording ("never mention one at `draft` or `halted`") is the one T7 measured. No step moved and no rule was dropped (D3).
-- **Whitespace-only re-wrap of steps 2-8 and the Never list at 90 columns** (D3 allows a reflow of the Never list; the other steps were re-wrapped the same way to recover the lines the new rules need). Word-level diff shows only the intended edits and the two trims in evidence T3.
+- **Whitespace-only re-wrap of steps 1-8 and the Never list at 90 columns** (D3 allows a reflow of the Never list; the other steps were re-wrapped the same way to recover the lines the new rules need). Word-level diff shows only the intended edits and the two trims in evidence T3.
