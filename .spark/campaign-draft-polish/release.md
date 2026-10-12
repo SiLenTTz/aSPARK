@@ -5,15 +5,15 @@
 | **Phase** | Keep |
 | **Owner** | Release Manager (`/go-live`) |
 | **Input** | `review.md` (`passed`), `qa.md` (`passed`) |
-| **Status** | `preparing` |
+| **Status** | `handed-off` |
 | **Version** | v0.14.1 (proposed only, `pr` mode: no tag before merge) |
 | **Date** | 2026-10-12 |
-| **Commit** | `<release commit SHA, filled after the user's go>` |
-| **PR** | `<url, filled after the user's go>` |
+| **Commit** | `7796f1d` (release commit); merged as `f86bf22` |
+| **PR** | https://github.com/a-lottes/aSPARK/pull/74 (merged 2026-10-12) |
 | **Ticket** | none (no tracker write-back) |
 
 **Handoff**
-- **Status:** `preparing` (mirrors the header table; authoritative for `Status` and `Version`).
+- **Status:** `handed-off` (mirrors the header table; authoritative for `Status` and `Version`).
 - **Summary:** patch release v0.14.1: `/campaign` drafts now carry a filled title, a fixed closing sentence and a best-effort notice of other live campaigns. All three are prompt material.
 - **Open:** `3 outstanding` - push, open PR, user merge/tag (owner: user, self-review via PR); see §3.
 - **Binding ruling:** §3 Release Actions and the KEEP GATE below carry the final ruling.
@@ -57,9 +57,9 @@
 | Action | Result |
 |---|---|
 | Version bump & tag | Done locally: `.claude-plugin/plugin.json` 0.14.0 -> 0.14.1 (patch, behaviour fix; no other file carries the version). No tag (pr mode). Precedent: v0.14.0's tag was set pre-merge on the user's explicit ask; user decides. |
-| PR / merge | PENDING (needs the user's go), repo `a-lottes/aSPARK` (from `origin`): 1. `git push -u origin fix/campaign-draft-polish` 2. `gh pr create --repo a-lottes/aSPARK --base main --head fix/campaign-draft-polish --title "chore(release): v0.14.1, /campaign draft polish" --body-file <PR body, drafted from §2>` 3. user self-reviews and merges 4. post-merge record pass: tag v0.14.1 on the merge commit, append `.spark/releases.md`, set `released`/`handed-off` fields. |
+| PR / merge | DONE: pushed, PR #74 opened, user merged 2026-10-12 as `f86bf22`. Original plan (kept for the record): (needs the user's go), repo `a-lottes/aSPARK` (from `origin`): 1. `git push -u origin fix/campaign-draft-polish` 2. `gh pr create --repo a-lottes/aSPARK --base main --head fix/campaign-draft-polish --title "chore(release): v0.14.1, /campaign draft polish" --body-file <PR body, drafted from §2>` 3. user self-reviews and merges 4. post-merge record pass: tag v0.14.1 on the merge commit, append `.spark/releases.md`, set `released`/`handed-off` fields. |
 | Deploy | N/A - handed-off, no deploy |
-| Post-release smoke check | N/A - handed-off, no deploy |
+| Post-release smoke check | Run on `origin/main` @ `f86bf22`: `plugin.json` valid JSON, version 0.14.1; `skills/campaign/SKILL.md` 75 lines; the three rules present (closing sentence verbatim 1 match, `never mention one at \`draft\` or \`halted\``); 3 lines of 91-92 chars (55, 62, 73), above the plan's self-set 90-char cap on changed lines, not an AC, disclosed and left unpatched. |
 | Rollback | Before merge: close the PR, delete the branch. After merge: `git revert -m 1 <merge-sha>` via a new PR (restores 0.14.0 and the old SKILL.md; the only user-visible change is the three prompt wordings). If a tag was set: delete it with `git push --delete origin v0.14.1`. |
 
 ## 4. Learnings (Keep!)
@@ -77,7 +77,7 @@
 
 - [x] All pre-flight checks passed at release time
 - [x] Changelog written in user-facing language
-- [ ] Release actions executed and verified - prepared, awaiting go (push, PR, CI, approver, merge pending); rollback path written
+- [x] Release actions executed and verified - pushed, PR #74 opened and merged by the user (self-review) as `f86bf22`; rollback path written
 - [x] Learnings recorded
 - [x] Line budget respected: Ist ~88 / Soll ~100 (excluding HTML comments), self-reported
-- [ ] Status set to `handed-off` - pending: after the PR is open, remaining is the user's merge and the v0.14.1 tag (owner: user as self-review approver; outside the Release Manager's control)
+- [x] Status set to `handed-off` - merged; the v0.14.1 tag on `f86bf22` is the user's go (pending)
