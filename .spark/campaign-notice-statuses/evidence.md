@@ -80,3 +80,78 @@ Fresh sessions on B (development), all wrote only the new draft:
 | Draft / halted | D1-D3, H1-H3 | **6 of 6** | 6 of 6 | none |
 
 So B fixed most of B2 (suppression 5 of 6, from 1 of 6) and cost B1 (notice 7 of 10, from 9 of 10): the stronger "say no word" phrasing made 3 of 10 sessions silent about a live instance, which is plan risk R2. The plan allows one restatement, and it is used. Further development rewording is outside the plan and goes to the user (plan T5, R2).
+
+**Note on a lost batch.** The first run of wording C hit the account's usage limit (HTTP 429, `usage_limit_reached` in `err.txt`): 22 sessions wrote nothing. They are not counted anywhere. The figures below are the fresh rerun after the limit reset.
+
+**Restatement C** (a second development restatement, outside the plan's "one", on the user's explicit answer "another rewording"; step 2 is 4 lines, 75 in all, the diff awk prints nothing):
+"Tell the user the name and Status of each other instance at `approved` or `running`, once, clash or not, not again in the report. Mention none at `draft`, `halted`, `complete` or `abandoned`, nor that none is live. Unreadable Status: only "Status not readable". Then go on. Read no constitution; a repo with no `.spark/` works the same."
+
+| Set | Sessions | Strict | Lenient | Misses |
+|---|---|---|---|---|
+| Notice, `running` | X1-X5 (X4-X5 with budget, X5 hostile) | 4 of 5 | 4 of 5 | X5 (hostile goal): no notice |
+| Notice, `approved` | Y1-Y5 | 5 of 5 | 5 of 5 | none |
+| **Notice total** | 10 | **9 of 10** | 9 of 10 | **at the floor of 9** |
+| Suppression (`complete` ×3, `abandoned` ×3) | P1-P3, W1-W3 | **6 of 6** | 6 of 6 | none |
+| Draft / halted | E1-E3, G1-G3 | **4 of 6** | 4 of 6 | **below the floor of 6**: E2 ("Another campaign, `payments-cutover`, exists, but it is only a draft, so it can't clash"), G1 (names it as `halted`, "not counting it as a clash") |
+
+Summary of the three wordings (development, fresh sessions each; never QA's figures):
+
+| | Notice /10 | Suppression `complete`/`abandoned` /6 | `draft`/`halted` /6 |
+|---|---|---|---|
+| A | 9 | 1 | not run |
+| B | 7 | 5 | 6 |
+| C | 9 | 6 | 4 |
+
+C is the best of the three on the registered floors except `draft`/`halted` (4 of 6). No wording met all three floors; this is carried to review and QA as a development result, not a pass. T5's one restatement and the user's one extra are used; no further development rewording is made.
+
+## T4 Static audit
+
+**Six-verdict table (AC-2.4, by reading `skills/campaign/SKILL.md:31-34`):**
+
+| Status | Verdict | Line |
+|---|---|---|
+| `draft` | silent | `:32` "Mention none at `draft`, `halted`," |
+| `approved` | announce | `:31` "…each other instance at `approved` or `running`," |
+| `running` | announce | `:31` |
+| `halted` | silent | `:32` |
+| `complete` | silent | `:33` "`complete` or `abandoned`, nor that none is live." |
+| `abandoned` | silent | `:33` |
+
+No row rests on inference. An unreadable Status: `:33-34` "only "Status not readable"".
+
+**Contract table:** input `<name> [kind]` and output `.spark/campaigns/<name>/campaign.md` (`:17-19`) unchanged; refusals write nothing (`:20`); step 2 self-name refusal (`:25-30`), "overwrite and merge nothing, ask for another name", unchanged, so the suppression covers *other* instances only (AC-2.5); step 4 kind check, step 7 and step 8 untouched.
+
+**Pre-existing long lines:** `:55` (91), `:62` (92), `:73` (91) are untouched by this diff (the diff hunks are `:31-34` and `:35-37`), left as they are. The diff awk (added lines, `+` stripped, > 90) prints nothing. `wc -l` = 75. Frontmatter `:1-9` is byte-identical to `origin/main` (md5 equal). `claude plugin validate .` passes (the same single warning).
+
+## T6 Edge cases (disclosed, unscored) and self-name
+
+| Session | Fixture | Reply | Note |
+|---|---|---|---|
+| e-a5 (A5) | `payments-cutover` `running`, `billing-sync` `approved`, `old-import` `complete` | **names none of the three** | the notice failed here: 0 of 2 live instances announced |
+| e-a6 (A6) | `payments-cutover` at `runing` | silent | no "Status not readable" line, no clash claim |
+| e-a7a (A7a) | `payments-cutover/` with only `notes.md` | "its Status is not readable" once | as intended |
+| e-a7b (A7b) | template copy, Status cell unfilled | silent | no clash claim |
+| e-none | no other instance | draft written, no absence line | allowed either way |
+
+Multiple live instances are an unscored gap the spec already names (§6): in one session the notice was omitted entirely.
+
+**AC-2.5 self-name, 2 sessions:** s-c (existing at `complete`) and s-a (existing at `abandoned`) each refused, naming the directory and its Status, nothing written, `shasum -c` OK: **2 of 2**.
+
+## T7 Regression (AC-3.1), development
+
+- **Kind check, 7 scratch plugin copies, one key removed each, goal on the command line:** `name`, `trigger`, `goal-kind`, `roles`, `stop-rules`, `budget-defaults`, `phases`. **7 of 7** named the missing key as malformed and wrote nothing (porcelain empty, commit count unchanged). Baseline 7 of 7.
+- **Directory refusal, 4 sessions:** existing at `running` (names its Status), at `draft` (names its Status), only `notes.md`, an empty directory with `.gitkeep`. **4 of 4** refused, nothing written, `shasum` unchanged.
+- **Over every draft** from T3, wording C's T5 sessions and T6 (31 drafts): `head -1` = `# Campaign: logger-structlog`, Status `draft`, §2 veto record identical to the template, no commit added (the fixture commits are the head), and the closing sentence present word for word: **31 of 31**. (The scorer's check was `head -1`, `grep`, a section diff against `templates/campaign.md`.)
+
+## T8 Compatibility dry run (NFR-4)
+
+On `cns/c-old` (an old draft plus a hand-made `running` instance): a new draft `inventory-sync` gave one line, "Another campaign, `payments-cutover`, is at `running`", and no mention of the old `draft`; the self-name for `logger-structlog` was refused naming its Status `draft` (and the same session also announced `payments-cutover` once). `shasum` before = after for both old files.
+
+## T9 Negative rerun and fence
+
+- Negative case rerun on the final wording: `/spark` and `/next-steps` unchanged in routing, `/spark` stops at Plan, **0 campaign mentions in 3 of 3**; porcelain empty for m1, m2; m3 (the plain prompt) edits `src/log.py` as before. Commit counts unchanged.
+- Fence (`origin/main...HEAD`): `git diff --stat` lists only `skills/campaign/SKILL.md` and `.spark/campaign-notice-statuses/*`; `--diff-filter=A` adds only this feature's artifacts; the constitution, `templates/`, `campaigns/` and `.claude-plugin/` diffs are empty; `.spark/.guard/` is untracked; `git ls-files '*.py'` is empty; validate passes.
+
+## Result summary (Act)
+
+T1-T9 done; T10 waits for QA (Deviations §2). **Not all floors are met in development:** notice 9 of 10 (at the floor), suppression `complete`/`abandoned` 6 of 6, `draft`/`halted` 4 of 6 (below 6 of 6). A5 (two live instances) is silent in the one disclosed session. These are carried to `/peer-review` and `/demo-day`, which measure fresh.
