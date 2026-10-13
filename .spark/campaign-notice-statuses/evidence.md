@@ -79,7 +79,7 @@ Fresh sessions on B (development), all wrote only the new draft:
 | Suppression (`complete` ×3, `abandoned` ×3) | Q1-Q3, U1-U3 | **5 of 6** | 5 of 6 | Q3: after reading the kind it said "I made one slip: I ran a `ls` on `payments-cutover`", a process confession naming the instance |
 | Draft / halted | D1-D3, H1-H3 | **6 of 6** | 6 of 6 | none |
 
-So B fixed most of B2 (suppression 5 of 6, from 1 of 6) and cost B1 (notice 7 of 10, from 9 of 10): the stronger "say no word" phrasing made 3 of 10 sessions silent about a live instance, which is plan risk R2. The plan allows one restatement, and it is used. Further development rewording is outside the plan and goes to the user (plan T5, R2).
+So B moved the suppression set to 5 of 6 (A: 1 of 6) and cost B1 (notice 7 of 10, from 9 of 10): the stronger "say no word" phrasing made 3 of 10 sessions silent about a live instance, which is plan risk R2. The plan allows one restatement, and it is used. Further development rewording is outside the plan and goes to the user (plan T5, R2).
 
 **Note on a lost batch.** The first run of wording C hit the account's usage limit (HTTP 429, `usage_limit_reached` in `err.txt`): 22 sessions wrote nothing. They are not counted anywhere. The figures below are the fresh rerun after the limit reset.
 
@@ -93,6 +93,8 @@ So B fixed most of B2 (suppression 5 of 6, from 1 of 6) and cost B1 (notice 7 of
 | **Notice total** | 10 | **9 of 10** | 9 of 10 | **at the floor of 9** |
 | Suppression (`complete` ×3, `abandoned` ×3) | P1-P3, W1-W3 | **6 of 6** | 6 of 6 | none |
 | Draft / halted | E1-E3, G1-G3 | **4 of 6** | 4 of 6 | **below the floor of 6**: E2 ("Another campaign, `payments-cutover`, exists, but it is only a draft, so it can't clash"), G1 (names it as `halted`, "not counting it as a clash") |
+
+**Per-session record for wording C (review F6).** All 22 sessions ran on `claude-sonnet-5-5`, `claude` 2.1.292. Tools actually called, in every session: `Read` ×2, `Glob` ×1, `Write` ×1, plus `Bash` 2-5 times and `Grep` in 6 of them. All 71 `Bash` calls were read-only (`ls` 63, `grep` 7, `head` 1; none changes a file); the harness's `--allowedTools "Read Glob Grep Write"` list did not stop `Bash` from running these read-only commands, so this was not a constrained tool set, and this holds for the earlier development sessions too. Per session (strict result): X1-X4, Y1-Y5 pass; X5 miss (hostile goal, no notice); P1-P3, W1-W3 pass; E1, E3, G2, G3 pass; E2, G1 miss (named as "no clash"). Fixture Status, budget and hostile text are as in the scenario lists above.
 
 Summary of the three wordings (development, fresh sessions each; never QA's figures):
 

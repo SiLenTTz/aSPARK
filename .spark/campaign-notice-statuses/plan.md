@@ -215,11 +215,11 @@ Prompt material has no suite (constitution §4).
 
 ## Deviations
 
-- **T10 is `blocked` by design once Act closes.** It cannot run before `/demo-day` has written fresh n of m (D5, C9). The review gate expects every task done, but Act closes with T1-T9 `done` and T10 `blocked`, and `/spark` continues with `/peer-review` and `/demo-day`. T10 then runs in `/increment` fix-mode, and the next gate re-checks it. This resolves the same conflict as `campaign-draft-polish` T11.
+- **T10 is `todo` by design and waits for QA once Act closes.** It cannot run before `/demo-day` has written fresh n of m (D5, C9). The review gate expects every task done, but Act closes with T1-T9 `done` and T10 `blocked`, and `/spark` continues with `/peer-review` and `/demo-day`. T10 then runs in `/increment` fix-mode, and the next gate re-checks it. This resolves the same conflict as `campaign-draft-polish` T11.
 
 ## Deviations (Act)
 
 1. **Step 3 trim wider than listed.** D3 (i) named only "invent no structure or tracker". To pay for the notice rule's +1 line, step 3 was also reflowed with "yourself" and "still contain" dropped (`If a path is not absolute, has $ or braces, or cannot be read`). Same rules, shorter words; the "never ask for a path" and absolute-path refusals stay.
 2. **T10 waits for QA**, as designed: Act closes with T1-T9 `done`; T10 runs in `/increment` fix-mode after `/demo-day`.
-3. **Candidate wording abandoned.** The plan's 5-line candidate (+2) did not fit; the shipped wording is 4 lines (+1, funded by step 3's -1). The meaning parts (a)-(f) are kept, except that "no clash" for an unreadable Status was dropped and the "Go on" flow kept as "Then go on".
+3. **Candidate wording abandoned.** The plan's 5-line candidate (+2) did not fit; the shipped wording is 4 lines (+1, funded by step 3's -1). The meaning parts (a)-(f) are kept, except two narrowings: "no clash" for an unreadable Status was dropped, and D1(e)'s case of a Status the agent does not know (A6, e.g. `runing`) is no longer named, so wording C says only "Unreadable Status: only \"Status not readable\"". T6 saw the A6 session stay silent; it is unscored. The "Go on" flow is kept as "Then go on".
 4. **Two development restatements, not one.** After T5's first rates (notice 7 of 10, suppression 5 of 6 on wording B) the user answered "another rewording" and wording C was run. C met the notice floor (9 of 10) and suppression (6 of 6) but not `draft`/`halted` (4 of 6). No further rewording; it goes to review and QA.
