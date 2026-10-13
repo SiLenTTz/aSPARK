@@ -157,3 +157,20 @@ On `cns/c-old` (an old draft plus a hand-made `running` instance): a new draft `
 ## Result summary (Act)
 
 T1-T9 done; T10 waits for QA (Deviations §2). **Not all floors are met in development:** notice 9 of 10 (at the floor), suppression `complete`/`abandoned` 6 of 6, `draft`/`halted` 4 of 6 (below 6 of 6). A5 (two live instances) is silent in the one disclosed session. These are carried to `/peer-review` and `/demo-day`, which measure fresh.
+
+## Fix round (QA round 1, B1-B3): wording D and D2 (development)
+
+Two usage-limit interruptions are disclosed: the first run of C's QA-adjacent batch, and the first run of D (a mixed batch, partly 429, discarded and rerun in full). No limit-hit session is counted anywhere.
+
+**Wording D** ("say word for word "Other campaign: <name>, Status <Status>." once only, clash or not", "Then go on" dropped): notice **1 of 10** (running 0 of 5, approved 1 of 5; V3 gave the sentence twice), suppression 6 of 6, draft/halted 5 of 6. The model checks the Status but emits text only in its closing report, so a rule "say" at step 2 is mostly never spoken. Rejected.
+
+**Wording D2** (shipped for the re-test; step 2 is 4 lines, 75 in all, the diff awk prints nothing): "For each other instance at `approved` or `running`, put one line "Other campaign: <name>, Status <Status>." in the report, clash or not. Say nothing of one at `draft`, `halted`, `complete` or `abandoned`, nor that none is live. Unreadable Status: only "Status not readable". Read no constitution; a repo with no `.spark/` works the same."
+Development, fresh (Z/V notice, K/J suppression, L/M draft-halted):
+
+| Set | Strict | Lenient | Misses |
+|---|---|---|---|
+| Notice (10) | **9 of 10** (running 4 of 5, approved 5 of 5) | 9 of 10 | Z3, the hostile goal: no notice |
+| Suppression `complete`/`abandoned` (6) | **5 of 6** | 5 of 6 | K1: "`payments-cutover` is `complete`, so it doesn't clash" |
+| Draft/halted (6) | **4 of 6** | 4 of 6 | M1 ("not live, so I'm reporting nothing on it"), M2 ("I did not read the existing `payments-cutover`..."): the instance is named while saying nothing |
+
+D2 is not measurably better than C in development (C: 9, 6, 4; D2: 9, 5, 4), and QA measured C at 5 of 10 where development had seen 9 of 10, so development figures overstate (the harness mix differs). The change in D2 is that the sentence sits in "the report", the only text the agent emits. "Then go on" is dropped again for space (Deviations §5). No claim of improvement is made; the QA re-test measures fresh.
