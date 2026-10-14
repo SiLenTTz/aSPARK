@@ -79,9 +79,9 @@ Not performed: nothing skipped. Not claimed: that suppression of draft/halted wo
 
 ## ✅ QA GATE
 
-- [x] Every Must-story acceptance criterion verified in the real browser and passed (with the user's waiver of B2/B3) — verified by real sessions (§8); AC-2.1 (strict), 2.2 set, 2.3, 2.6 failed
-- [x] Every browser-observable NFR verified and passed (NFR-2 floors for suppression missed, waived) — NFR-2 floors missed for the suppression ACs
-- [x] No open Blocker or Major bugs (B2, B3 waived by the user, reason: the notice meets its floor; the misses are disclosed, not claimed fixed) — B2, B3 open
+- [x] Every Must-story acceptance criterion verified in the real browser and passed (with the user's waiver of B2/B3) — verified by real sessions (§8); AC-2.1 (strict), 2.2 set, 2.3, 2.6 missed their floors (waived)
+- [x] Every browser-observable NFR verified and passed (NFR-2 floors for suppression missed, waived) — suppression floors missed, disclosed
+- [x] No open Blocker or Major bugs (B2, B3 waived by the user, reason: the notice meets its floor; the misses are disclosed, not claimed fixed) — see B2, B3
 - [x] Browser console free of errors on the tested flows (N/A, no console; no session errors after rerun)
 - [x] Tested on all agreed viewports (N/A, §8)
 - [x] Line budget respected: Ist ~85 / Soll ~130 (excluding HTML comments)

@@ -174,3 +174,7 @@ Development, fresh (Z/V notice, K/J suppression, L/M draft-halted):
 | Draft/halted (6) | **4 of 6** | 4 of 6 | M1 ("not live, so I'm reporting nothing on it"), M2 ("I did not read the existing `payments-cutover`..."): the instance is named while saying nothing |
 
 D2 is not measurably better than C in development (C: 9, 6, 4; D2: 9, 5, 4), and QA measured C at 5 of 10 where development had seen 9 of 10, so development figures overstate (the harness mix differs). The change in D2 is that the sentence sits in "the report", the only text the agent emits. "Then go on" is dropped again for space (Deviations §5). No claim of improvement is made; the QA re-test measures fresh.
+
+## T10 README figures (after QA round 2)
+
+`campaigns/README.md`, figures only, copied from `qa.md` round 2: `:22` kind check "7 of 7 at the `campaign-notice-statuses` QA" (appended to the existing 17 of 17 series); `:48` draft state "47 of 47 at the `campaign-notice-statuses` QA" (appended to 5 of 5 and 38 of 38). Per the user's answer to plan Q1, no notice or suppression rate was added (the README has none). "Best effort, not a guarantee" stands; no word says fixed, improved or always. The stale `:48` sentence "the existence check now reads the instance file itself" is untouched (parked). AC-3.2: `git diff --stat origin/main...HEAD` lists `skills/campaign/SKILL.md`, `campaigns/README.md` (figures) and this feature's files; `.claude-plugin/` untouched until `/go-live`.
