@@ -171,9 +171,9 @@ Development, fresh (Z/V notice, K/J suppression, L/M draft-halted):
 |---|---|---|---|
 | Notice (10) | **9 of 10** (running 4 of 5, approved 5 of 5) | 9 of 10 | Z3, the hostile goal: no notice |
 | Suppression `complete`/`abandoned` (6) | **5 of 6** | 5 of 6 | K1: "`payments-cutover` is `complete`, so it doesn't clash" |
-| Draft/halted (6) | **4 of 6** | 4 of 6 | M1 ("not live, so I'm reporting nothing on it"), M2 ("I did not read the existing `payments-cutover`..."): the instance is named while saying nothing |
+| Draft/halted (6) | **3 of 6** | 3 of 6 | L1 ("Other campaign: none live, so there is nothing to report", an absence line, found by the review re-score), M1 ("not live, so I'm reporting nothing on it"), M2 ("I did not read the existing `payments-cutover`..."): the instance is named while saying nothing |
 
-D2 is not measurably better than C in development (C: 9, 6, 4; D2: 9, 5, 4), and QA measured C at 5 of 10 where development had seen 9 of 10, so development figures overstate (the harness mix differs). The change in D2 is that the sentence sits in "the report", the only text the agent emits. "Then go on" is dropped again for space (Deviations §5). No claim of improvement is made; the QA re-test measures fresh.
+D2 is not measurably better than C in development (C: 9, 6, 4; D2: 9, 5, 3 after the review re-score of L1), and QA measured C at 5 of 10 where development had seen 9 of 10, so development figures overstate (the harness mix differs). The change in D2 is that the sentence sits in "the report", the only text the agent emits. "Then go on" is dropped again for space (Deviations §5). No claim of improvement is made; the QA re-test measures fresh.
 
 ## T10 README figures (after QA round 2)
 

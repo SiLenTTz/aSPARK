@@ -10,7 +10,7 @@
 
 **Handoff**
 - **Status:** mirrors the header table above (authoritative for `Status`).
-- **Summary:** One in-place rewrite of the other-instance sentence in `skills/campaign/SKILL.md` step 2. It gives an explicit verdict for each of the six Status values, puts the notice here and not in the report, forbids any absence statement, and allows at most one "Status not readable" line. Net ≤ 75 lines and every changed line ≤ 90 characters, paid for by trims from a named list or the task stops for the user. The skeleton (T3) proves the rewrite end to end. Rates are fresh `claude -p` n of m, strict and lenient side by side. README figures wait for QA (T10).
+- **Summary:** One in-place rewrite of the other-instance sentence in `skills/campaign/SKILL.md` step 2. It gives an explicit verdict for each of the six Status values, puts the notice as one line in the report (wording D2 after QA round 1), forbids any absence statement, and allows at most one "Status not readable" line. Net ≤ 75 lines and every changed line ≤ 90 characters, paid for by trims from a named list or the task stops for the user. The skeleton (T3) proves the rewrite end to end. Rates are fresh `claude -p` n of m, strict and lenient side by side. README figures wait for QA (T10).
 - **Open:** `0 tasks not done`. Q1 and Q2 answered at approval.
 - **Binding ruling:** §3 Task Breakdown for current task status; a plan revision after review/QA findings updates §1/§3 in place, never a new section
 - **On conflict:** the numbered body below wins for everything except `Status`; log the mismatch as a finding at the next `/peer-review` and proceed — don't stop on it.
@@ -215,7 +215,7 @@ Prompt material has no suite (constitution §4).
 
 ## Deviations
 
-- **T10 is `todo` by design and waits for QA once Act closes.** It cannot run before `/demo-day` has written fresh n of m (D5, C9). The review gate expects every task done, but Act closes with T1-T9 `done` and T10 `blocked`, and `/spark` continues with `/peer-review` and `/demo-day`. T10 then runs in `/increment` fix-mode, and the next gate re-checks it. This resolves the same conflict as `campaign-draft-polish` T11.
+- **T10 is `todo` by design and waits for QA once Act closes.** It cannot run before `/demo-day` has written fresh n of m (D5, C9). The review gate expects every task done, but Act closes with T1-T9 `done` and T10 `todo`, and `/spark` continues with `/peer-review` and `/demo-day`. T10 then runs in `/increment` fix-mode, and the next gate re-checks it. This resolves the same conflict as `campaign-draft-polish` T11.
 
 ## Deviations (Act)
 

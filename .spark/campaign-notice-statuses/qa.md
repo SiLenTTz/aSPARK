@@ -12,7 +12,7 @@
 **Handoff**
 - **Status:** mirrors the header table above (authoritative for `Status`).
 - **Verdict:** Fail, narrower than round 1. The notice now meets its floor (AC-1.1/1.2 strict 9 of 10, was 5 of 10; pooled 17 of 20, was 12 of 20). Still below floor, unchanged from round 1: AC-2.2 set (S1-S6 strict 5 of 6, floor 6; S2 absence line), AC-2.3 (draft/halted strict 3 of 6, floor 6; D2 and D6 now name the instance with the notice wording, D3 absence line), AC-2.6 (2 of 12 absence lines: S2, D3). Instance never named for `complete`/`abandoned` 6 of 6. I would not demo the suppression claim.
-- **Open:** 0 Blockers; Majors: B2, B3 waived by the user on 2026-10-14 (ships with disclosure; the suppression ACs AC-2.1 strict, 2.2, 2.3 and 2.6 stay below their floors) (B2 is the user-waived review F1, recorded refuted-with-finding, not retried). B1 `fixed r2`. Minors: B5 `open`; B4 `fixed r2`.
+- **Open:** 0 Blockers; Majors: B2, B3 waived by the user on 2026-10-14 (ships with disclosure; the suppression ACs AC-2.1 strict, 2.2, 2.3 and 2.6 stay below their floors) (B2 is the user-waived review F1, recorded refuted-with-finding, not retried). B1 `fixed r2`. Minors: B5 accepted by the user; B4 `fixed r2`.
 - **Binding ruling:** §5 Verdict and the gate checklist below.
 - **On conflict:** the numbered body below wins for everything except `Status`; log the mismatch as a finding at the next `/demo-day` and proceed.
 
@@ -46,7 +46,7 @@ Strict = exactly the AC wording incl. no absence line and no double; lenient bes
 | AC-3.1 directory | X1 `campaign.md` `running`, X2 `draft`, X3 only `notes.md`, X4 `.gitkeep` | named, nothing written | 4 of 4 [4/4]; X1/X2 name Status, X3/X4 "no Status to report"; shasum same, commits unchanged | ✅ pass 4 of 4 |
 | AC-3.1 draft shape | every written draft (47 incl. pooled, extras, comparison, old-draft; 22 in sets 2-4) | `# Campaign: logger-structlog`, `draft`, veto identical to template, only `campaign.md`, no commit, sentence verbatim in sets 2-4 | 47 of 47 [38/38]; sets 2-4 22 of 22; sentence present in all 22 | ✅ pass |
 | AC-3.2 | `git diff --stat origin/main...HEAD` | only SKILL.md + `.spark/campaign-notice-statuses/*` | 6 files: the five feature artifacts + `skills/campaign/SKILL.md` (12 lines); nothing under `.claude-plugin/`, `templates/`, `campaigns/`, constitution | ✅ pass |
-| NFR-1 | `wc -l`; added lines >90 chars; frontmatter 1-9 | ≤75; none; identical | 75 lines; no added line over 91 chars; frontmatter identical | ✅ pass |
+| NFR-1 | `wc -l`; added lines >90 chars; frontmatter 1-9 | ≤75; none; identical | 75 lines; no added line over 90 chars (longest 88); frontmatter identical | ✅ pass |
 | NFR-2 | best-effort ACs, README wording | docs call these best effort, with measured rates | `campaigns/README.md:22,48` "Best effort, not a guarantee"; no notice figure there yet (T10). Floors missed for AC-2.1/2.2/2.3/2.6 | ⚠ wording honest; floors missed |
 | NFR-3 | frontmatter, name, argument | unchanged | identical; all drafts `campaign.md` | ✅ pass |
 | NFR-4 | M1: old `old-draft` (template, `draft`) + `payments-cutover` `running` | notice once, old files untouched | "Other campaign: payments-cutover, Status running." once; only new `campaign.md` added; commits 3 to 3 | ✅ pass 1 of 1 |
