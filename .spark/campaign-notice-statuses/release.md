@@ -5,17 +5,17 @@
 | **Phase** | Keep |
 | **Owner** | Release Manager (`/go-live`) |
 | **Input** | `review.md` (`passed`), `qa.md` (`passed`) |
-| **Status** | `preparing` |
+| **Status** | `handed-off` |
 | **Version** | v0.14.2 (proposed only, `pr` mode: no tag before merge) |
 | **Date** | 2026-10-14 |
-| **Commit** | `f7f1120af4fc21b8bde3f5e53a4343e883c4c821` (release commit, local only; merge commit pending) |
-| **PR** | pending (not yet opened) |
+| **Commit** | `f7f1120` (release commit); merged as `541d5af` |
+| **PR** | https://github.com/a-lottes/aSPARK/pull/77 (merged 2026-10-14) |
 | **Ticket** | none (no tracker write-back) |
 
 **Handoff**
 - **Status:** `preparing` (mirrors the header table; authoritative for `Status` and `Version`).
 - **Summary:** patch release v0.14.2: `/campaign` now puts one fixed "Other campaign" line in its report for another live campaign and stays silent on non-live ones. Prompt material, passed QA by the user's waiver, not by the floors.
-- **Open:** `4 outstanding` - push, open PR, user merge, tag on the merge commit (owner: user, self-review via PR); see §3.
+- **Open:** `1 outstanding` - tag v0.14.2 on `541d5af` (needs the user's go); see §3.
 - **Binding ruling:** §3 Release Actions and the KEEP GATE below carry the final ruling.
 - **On conflict:** the numbered body below wins for everything except `Status`/`Version`; log the mismatch as a finding at the next `/go-live` and proceed.
 
@@ -53,7 +53,7 @@
 | Version bump & tag | Done locally: release commit `f7f1120`, `.claude-plugin/plugin.json` 0.14.1 -> 0.14.2 (patch: behaviour change to prompt material, no new surface; only file carrying the version). No tag (pr mode): tag v0.14.2 on the merge commit after merge, with the user's go. |
 | PR / merge | PENDING, needs the user's go; repo `a-lottes/aSPARK` (from `origin` `git@github.com:a-lottes/aSPARK.git`): 1. `git push -u origin fix/campaign-notice-statuses` 2. `gh pr create --repo a-lottes/aSPARK --base main --head fix/campaign-notice-statuses --title "chore(release): v0.14.2, /campaign notice by Status" --body-file <PR body drafted from §2, naming the user-ruled QA pass>` 3. user self-reviews and merges 4. record pass: tag v0.14.2 on the merge commit, append `.spark/releases.md`, fill the Commit/PR rows with executed results. PR-open, validate-passing and approver-requested not yet established. |
 | Deploy | N/A - handed-off, no deploy |
-| Post-release smoke check | N/A - handed-off, no deploy (after merge: `plugin.json` version 0.14.2, `skills/campaign/SKILL.md` carries the "Other campaign:" line) |
+| Post-release smoke check | Run on `origin/main` @ `541d5af`: `plugin.json` valid JSON, version 0.14.2; `skills/campaign/SKILL.md` 75 lines, step 2 carries the "Other campaign: <name>, Status <Status>." line; `claude plugin validate .` passes (1 old warning); `git ls-files '*.py'` empty. The 3 lines of 91-92 chars (55, 62, 73) are pre-existing from v0.14.1, outside this diff. |
 | Rollback | Before merge: close the PR, delete the branch. After merge: `git revert -m 1 <merge-sha>` via a new PR (restores 0.14.1 and the old step 2 wording). If a tag was set: `git push --delete origin v0.14.2`. |
 
 ## 4. Learnings (Keep!)
@@ -71,7 +71,7 @@
 
 - [x] All pre-flight checks passed at release time
 - [x] Changelog written in user-facing language
-- [ ] Release actions executed and verified - NOT YET: pushed/PR/merge/tag await the user's go; rollback path written
+- [x] Release actions executed and verified - pushed, PR #77 opened and merged by the user (self-review) as `541d5af`; smoke check below; rollback path written
 - [x] Learnings recorded
 - [x] Line budget respected: Ist ~80 / Soll ~100 (excluding HTML comments), self-reported
-- [ ] Status set to `handed-off` - stays `preparing`; outstanding: push, PR, merge, tag v0.14.2, owner: user (self-review via PR)
+- [x] Status set to `handed-off` - merged; the v0.14.2 tag on `541d5af` awaits the user's go
