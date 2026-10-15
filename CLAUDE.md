@@ -138,3 +138,26 @@ every Status it covers: "never mention `draft` or `halted`" left `complete` and
 `abandoned` instances still announced (review F3, QA B2). And before trimming a
 "redundant" phrase, check that no other ban rode on it ("run or offer nothing",
 review F2). See `.spark/campaign-draft-polish/review.md` and `qa.md`.
+
+## Put a required line where the output is written, and stop rewording a trade
+
+Three habits from `campaign-notice-statuses`, a prompt-material loop whose
+four wordings never met all floors together.
+
+**A "say X" rule at a mid-run step is mostly not spoken.** The agent emits
+text only in its closing report, so an instruction to announce something at
+step 2 rarely reaches the user (wording D: 1 of 10). Put the required line
+where the output is written, here the closing report, not where the
+decision is made.
+
+**A development matrix is not a QA forecast.** Wording C scored 9 of 10 in
+development and 5 of 10 at QA. At Plan, state the expected gap up front and
+decide which set carries the floor (see "Decide up front how extra
+sessions count"); never promise the development rate.
+
+**When one wording only moves the failure from one pole to the other, stop
+rewording and change the structure.** Notice versus silence for non-live
+instances traded places across four wordings. That is a signal for a
+structural change (a required report line, which needs a spec and plan
+change), not a fifth rewording. See `.spark/campaign-notice-statuses/release.md`
+§4 and `qa.md`.
