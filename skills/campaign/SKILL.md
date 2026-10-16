@@ -28,10 +28,8 @@ iterations; a story or a wish is not one.
    path); an empty glob of `.spark/campaigns/*` proves nothing, because a glob lists
    files, not directories. If it exists, even without `campaign.md`, name it and, if
    `campaign.md` is there, its Status; overwrite and merge nothing, ask for another name.
-   For each other instance at `approved` or `running`, put one line "Other campaign:
-   <name>, Status <Status>." in the report, clash or not. Say nothing of one at `draft`,
-   `halted`, `complete` or `abandoned`, nor that none is live. Unreadable Status: only
-   "Status not readable". Read no constitution; a repo with no `.spark/` works the same.
+   Read each other instance's Status for step 8; say nothing of it before then. Read no
+   constitution; a repo with no `.spark/` works the same.
 3. **Plugin paths.** Read `${CLAUDE_PLUGIN_ROOT}/campaigns/*.md` and
    `${CLAUDE_PLUGIN_ROOT}/templates/campaign.md`; never ask for a path. If a path is not
    absolute, has `$` or braces, or cannot be read: stop, name the cause, write nothing.
@@ -64,9 +62,11 @@ iterations; a story or a wish is not one.
    record blank and §7 empty. One Write, file name `campaign.md`.
 8. **Report.** List every element still holding a placeholder (the veto record too), say
    word for word "This draft is not startable until these are filled and you approve.",
-   and name the next step the kind's plan-phase roles imply, as a session the user runs.
-   Approval and commits are not this command's: offer neither, the user records approval
-   later as the template says. Dispatch nothing.
+   then "Other campaigns: none." or "Other campaigns:" and, per other instance, "<name>
+   (<Status>, live)" at `approved`/`running`, else "<name> (<Status>)"; Status as written,
+   never live at `draft`, `halted`, `complete`, `abandoned`; unreadable: "Status not
+   readable". Name the next step the kind's plan-phase roles imply, as a session the user
+   runs. Approval and commits are not this command's: offer neither. Dispatch nothing.
 
 ## Never
 
