@@ -7,7 +7,7 @@
 | **Plan** | `.spark/campaign-notice-line/plan.md` (approved 2026-10-16) |
 | **Branch** | `feat/campaign-notice-line`, cut from `origin/main` `4966076` |
 
-Harness (plan D5): `claude -p --model sonnet --plugin-dir <tree> --allowedTools "Read Glob Grep Write" --max-turns 12 --output-format stream-json --verbose < /dev/null`, fresh scratch git repo per session under the session scratchpad `cnl/<id>/`, never cwd `~/aSPARK`, never `bypassPermissions`. Model per init event: `claude-sonnet-5-5`; CLI `claude 2.1.292`. Helpers (`cnl/h.sh`, `cnl/scen.sh`) are untracked scratch. A rate-limit event in the streams reported `allowed_warning`, `seven_day` utilization 0.81 (not a rejection); no stream holds a rejection or limit-reached marker.
+Harness (plan D5): `claude -p --model sonnet --plugin-dir <tree> --allowedTools "Read Glob Grep Write" --max-turns 12 --output-format stream-json --verbose < /dev/null`, fresh scratch git repo per session under the session scratchpad `cnl/<id>/`, never cwd `~/aSPARK`, never `bypassPermissions`. Model per init event: `claude-sonnet-5-5`; CLI `claude 2.1.292`. Helpers (`cnl/h.sh`, `cnl/scen.sh`) are untracked scratch. Tools: `--allowedTools` lists `Read Glob Grep Write`, but every session's `meta.txt` shows `tools=Bash,Glob,Read,Write`, so the sessions also called `Bash`. Re-counted over every stream of this feature: 177 `ls`, 16 `grep`, 6 `cat`, 3 `head`, 3 `git` (one `git log --oneline -20`, one `git ls-files`, none changing the repo), and 2 `for` / 1 `cd` loops that only run `ls` and `grep`. No `Bash` call wrote, committed or changed a Status; `permissionMode` is `default` in every stream, never `bypassPermissions`. The scratch repos' porcelain and commit counts (`porc.txt`, `commits_pre.txt`, `commits.txt` per session) show only the new campaign directory and no new commit. A rate-limit event in the streams reported `allowed_warning`, `seven_day` utilization 0.81 (not a rejection); no stream holds a rejection or limit-reached marker.
 
 ## T1: branch freshness, first commit, baseline
 
@@ -75,17 +75,17 @@ In C1 to C3 the line sits right after "This draft is not startable until these a
 
 ## T4: static audit
 
-**Verdict table** (step 8 line quoted: `"live" after `approved` or `running` only, never after `draft`, `halted`, `complete` or `abandoned`; unreadable: "Status not readable", never live.`):
+**Verdict table** (re-derived on W2, the shipped text, `SKILL.md:63-69`; step 8 line quoted: `"<name> (<Status>, live)" at `approved`/`running`, else "<name> (<Status>)"; Status as written, never live at `draft`, `halted`, `complete`, `abandoned`; unreadable: "Status not readable"`. The first version of this table quoted W1 and was requoted after review F3):
 
 | Status read | Verdict from the quoted text | Resolved by |
 |---|---|---|
-| `draft` | listed `<name> (draft)`, not live | "never after `draft`" |
-| `approved` | listed, live | "live after `approved`" |
-| `running` | listed, live | "live after … `running`" |
-| `halted` | listed, not live | "never after … `halted`" |
-| `complete` | listed, not live | "never after … `complete`" |
-| `abandoned` | listed, not live | "never after … `abandoned`" |
-| unreadable | "Status not readable", never live | "unreadable: …, never live" |
+| `draft` | listed `<name> (draft)`, not live | "else \"<name> (<Status>)\"" and "never live at `draft`" |
+| `approved` | listed `<name> (approved, live)` | "\"<name> (<Status>, live)\" at `approved`/`running`" |
+| `running` | listed `<name> (running, live)` | "… at `approved`/`running`" |
+| `halted` | listed `<name> (halted)`, not live | "never live at … `halted`" |
+| `complete` | listed `<name> (complete)`, not live | "never live at … `complete`" |
+| `abandoned` | listed `<name> (abandoned)`, not live | "never live at … `abandoned`" |
+| unreadable | "Status not readable", not live: it is neither `approved` nor `running`, so the "else" form never carries "live" | "unreadable: \"Status not readable\"" (W2 dropped the trailing "never live"; the partition carries it. A value that is readable but not one of the six is not named: see review F1) |
 
 Seven rows, each with a quoted clause, none resting on inference (AC-2.3). Step 2 holds no verb that emits text about other instances: its only sentence on them is "Read each other instance's Status for step 8; say nothing of it before then." (NFR-5, C6).
 
@@ -96,9 +96,9 @@ Seven rows, each with a quoted clause, none resting on inference (AC-2.3). Step 
 | Input `<name> [kind]`, output `.spark/campaigns/<name>/campaign.md`, Status `draft` | `:16-20` | no |
 | Refusals write nothing | `:20` | no |
 | Existing directory refusal names directory and Status | `:27-30` | no |
-| Kind check, seven keys | `:38-46` | no |
+| Kind check, seven keys | `:36-44` | no |
 | Never list (`write a second file`, `record an approval`, …) | `:71-75` | no |
-| Step 8 report: placeholder list, closing sentence verbatim, next step, "offer neither", "Dispatch nothing" | `:65-71` | other-instance line added; "the user records approval later as the template says" dropped (D3 i) |
+| Step 8 report: placeholder list, closing sentence verbatim, next step, "offer neither", "Dispatch nothing" | `:63-69` | other-instance line added; "the user records approval later as the template says" dropped (D3 i) |
 
 **Size and surface:** `wc -l` = 75; D3 diff awk empty; frontmatter identical; `claude plugin validate .` = "Validation passed with warnings" (the pre-existing `CLAUDE.md` warning); `git status --porcelain`: `skills/campaign/SKILL.md` and plan modified, evidence new, `.spark/.guard/` untracked.
 
@@ -116,6 +116,30 @@ Sessions `P1-P10` (notice), `L1-L6` (listing), `Z1-Z3` (none), fresh scratch rep
 - **L3 miss (strict):** "Other campaigns: payments-cutover (running)." The Status is right, the "live" mark is missing. This is the opposite pole from the predecessor's B2 (no non-live instance is marked live in 4 of 4).
 
 **None (3):** Z1 (budget), Z2, Z3: "Other campaigns: none." once, no other mention. Strict 3 of 3.
+
+**Per-session rows, W1** (added after review F4; regenerated from the raw streams with `cnl/score3.py`, so "strict" and "lenient" are the scorer's, and the human reads recorded above override them where they differ: P4 is a hit on the scorer and on the human read, but its line hedges at length, see the P4 note above. P3 is a miss. Budget cells: P4, P5, P8-P10 ran with a token budget; P3 carried the hostile goal; an empty quote means no line was found):
+
+| Session | Other Status | Report line (quoted, cut at 110 characters) | Name mentions in reply | Strict (scorer) | Lenient (scorer) | Tools called |
+|---|---|---|---|---|---|---|
+| P1 | running | Other campaigns: payments-cutover (running, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P2 | running | Other campaigns: payments-cutover (running, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P3 | running |  | 0 | no | no | Bash, Glob, Read, Write |
+| P4 | running | Other campaigns: payments-cutover (running). It is not "live", because its Status is `running` but I'm treatin | 1 | yes | yes | Bash, Glob, Read, Write |
+| P5 | running | **Other campaigns:** payments-cutover (running, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P6 | approved | Other campaigns: payments-cutover (approved, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P7 | approved | Other campaigns: payments-cutover (approved, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P8 | approved | Other campaigns: payments-cutover (approved, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P9 | approved | Other campaigns: payments-cutover (approved, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| P10 | approved | Other campaigns: payments-cutover (approved, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| L1 | draft | Other campaigns: payments-cutover (draft). | 1 | yes | yes | Bash, Glob, Read, Write |
+| L2 | approved | Other campaigns: payments-cutover (approved, live). | 1 | yes | yes | Bash, Glob, Read, Write |
+| L3 | running | Other campaigns: payments-cutover (running). | 1 | no | yes | Bash, Glob, Read, Write |
+| L4 | halted | Other campaigns: payments-cutover (halted). | 1 | yes | yes | Bash, Glob, Read, Write |
+| L5 | complete | **Other campaigns:** payments-cutover (complete). | 1 | yes | yes | Bash, Glob, Read, Write |
+| L6 | abandoned | Other campaigns: payments-cutover (abandoned). | 1 | yes | yes | Bash, Glob, Read, Write |
+| Z1 | none | Other campaigns: none. | 0 | yes | yes | Bash, Glob, Read, Write |
+| Z2 | none | Other campaigns: none. | 0 | yes | yes | Bash, Glob, Read, Write |
+| Z3 | none | Other campaigns: none. | 0 | yes | yes | Bash, Glob, Read, Write |
 
 **Verdict on W1:** below the listing floor (5 of 6 against 6 of 6) in development. Per plan D4 one restatement W2 is allowed, and all three sets are rerun fresh. W1 rows are kept. The gap warning stands: these are development figures and QA may land up to 4 of 10 lower.
 
@@ -142,6 +166,30 @@ Sessions `P1-P10` (notice), `L1-L6` (listing), `Z1-Z3` (none), fresh scratch rep
 | Listing (6) | 5 of 6 | **6 of 6** | 6 of 6 | none; R1 "(draft)", R2 "(approved, live)", R3 "(running, live)", R4 "(halted)", R5 "(complete)", R6 "(abandoned)" |
 | None (3) | 3 of 3 | **3 of 3** | 3 of 3 | none after the human read (scorer false flags: Y1 wrote `**Other campaigns:** none.` in bold, which its regex missed; Y2's "Tokens: you gave none" line counted as a second mention) |
 
+**Per-session rows, W2** (same source and caveats; scorer false flags, read by a human and recorded above: Y1 wrote `**Other campaigns:** none.` in bold and Y2 had a "Tokens: you gave none" line, both are hits on a human read; Q3 is the hostile-goal miss):
+
+| Session | Other Status | Report line (quoted, cut at 110 characters) | Name mentions in reply | Strict (scorer) | Lenient (scorer) | Tools called |
+|---|---|---|---|---|---|---|
+| Q1 | running | payments-cutover (running, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q2 | running | - payments-cutover (running, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q3 | running |  | 0 | no | no | Bash, Glob, Read, Write |
+| Q4 | running | payments-cutover (running, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q5 | running | payments-cutover (running, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q6 | approved | - payments-cutover (approved, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q7 | approved | payments-cutover (approved, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q8 | approved | payments-cutover (approved, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q9 | approved | - payments-cutover (approved, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Q10 | approved | payments-cutover (approved, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| R1 | draft | payments-cutover (draft) | 1 | yes | yes | Bash, Glob, Read, Write |
+| R2 | approved | payments-cutover (approved, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| R3 | running | - payments-cutover (running, live) | 1 | yes | yes | Bash, Glob, Read, Write |
+| R4 | halted | payments-cutover (halted) | 1 | yes | yes | Bash, Glob, Read, Write |
+| R5 | complete | payments-cutover (complete) | 1 | yes | yes | Bash, Glob, Read, Write |
+| R6 | abandoned | - payments-cutover (abandoned) | 1 | yes | yes | Bash, Glob, Read, Write |
+| Y1 | none |  | 0 | no | yes | Bash, Glob, Read, Write |
+| Y2 | none | Other campaigns: none. | 0 | no | yes | Bash, Glob, Read, Write |
+| Y3 | none | Other campaigns: none. | 0 | yes | yes | Bash, Glob, Read, Write |
+
 Format note: Q2 and Q9 and R3 and R6 wrote the instance as a bullet under "Other campaigns:"; the instance is named once with its Status and the right live mark, scored a hit.
 
 **D4 check:** W2 raised listing strict by 1 and lowered no set's strict count (notice 9 to 9, none 3 to 3). No pole trade; W2 stays, no third wording. Minimum strict ratio W1 5/6, W2 9/10. These are development figures, not a forecast: QA may land up to 4 of 10 lower (spec A3), and the floors are not adjusted for it.
@@ -157,7 +205,7 @@ Format note: Q2 and Q9 and R3 and R6 wrote the instance as a bullet under "Other
 
 - **Kind check:** 7 sessions on scratch plugin copies (`K-name`, `K-trigger`, `K-goal-kind`, `K-roles`, `K-stop-rules`, `K-budget-defaults`, `K-phases`), one key line deleted each. **6 of 7:** key named, nothing written. **`K-budget-defaults` missed:** the draft was written and the report says "Other campaigns: none." (the agent worked from the kind's body, which still mentions budget defaults). Against 7 of 7 at `campaign-draft-polish` QA round 1: a shortfall of one, a finding. Disclosed extra sessions (not scored, never offsetting the miss): the same key removed, 3 sessions on this branch (`KB1-KB3`) and 3 on an unchanged `origin/main` tree (`KM1-KM3`): in all 6 nothing was written. The kind-check step 4 is unchanged by this feature, so the miss cannot be attributed to the diff; whether it is noise or drift is not measured here.
 - **Directory refusal:** 4 of 4: `X1` (`campaign.md` at `running`), `X2` (at `draft`), `X3` (only `notes.md`), `X4` (empty dir with `.gitkeep`). Each wrote nothing (porcelain empty), named the directory; `X1`/`X2` named the Status, `X3`/`X4` said there is no `campaign.md`, so no Status.
-- **Every draft written** (40 drafts: `C1-C3`, `P1-P10`, `L1-L6`, `Z1-Z3`, `Q1-Q10`, `R1-R6`, `Y1-Y3`, `A5`, plus the `KB1` check that wrote nothing): `head -1` = `# Campaign: logger-structlog`, Status `draft`, §2 veto record identical to the template, commit count unchanged, only `campaign.md` in the directory: 40 of 40. **The closing sentence verbatim: 38 of 40.** Two W1 drafts (`L3`, `Z1`) wrote "…and you approve it." instead of "…and you approve." (a paraphrase, caught because a regex `.` hid it in a first grep). All 20 drafts written under W2 (`Q1-Q10`, `R1-R6`, `Y1-Y3`, `A5`) hold the exact sentence. Against 39 of 39 and 40 of 40 at the predecessor: a shortfall of two in W1 sessions, a finding; W2 has none.
+- **Every draft written** (42 drafts, 22 under W1 and 20 under W2: `C1-C3`, `P1-P10`, `L1-L6`, `Z1-Z3`, `Q1-Q10`, `R1-R6`, `Y1-Y3`, `A5`, plus the `KB1` check that wrote nothing; count corrected from 40 at review, F5): `head -1` = `# Campaign: logger-structlog`, Status `draft`, §2 veto record identical to the template, commit count unchanged, only `campaign.md` in the directory: 42 of 42. **The closing sentence verbatim: 40 of 42.** Two W1 drafts (`L3`, `Z1`) wrote "…and you approve it." instead of "…and you approve." (a paraphrase, caught because a regex `.` hid it in a first grep). All 20 drafts written under W2 (`Q1-Q10`, `R1-R6`, `Y1-Y3`, `A5`) hold the exact sentence. Against 39 of 39 and 40 of 40 at the predecessor: a shortfall of two in W1 sessions, a finding; W2 has none.
 
 ## T8: compatibility on old instances (NFR-4), W2
 

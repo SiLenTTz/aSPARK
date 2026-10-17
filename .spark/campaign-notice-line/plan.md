@@ -11,7 +11,7 @@
 **Handoff**
 - **Status:** mirrors the header table above (authoritative for `Status`).
 - **Summary:** In `skills/campaign/SKILL.md`, step 2 shrinks to a silent read of each other instance's Status. Step 8 gains one required line, chained right after the fixed closing sentence: "Other campaigns: none." or each other instance once with its Status, "live" only for `approved`/`running`, all six values and the unreadable case named. Net 0 lines (step 2 frees 2, step 8 takes 2, funded by a vetted trim list or `blocked`). Development allows at most one restatement, and a pole-trade stop rule applies. Floors are held to the registered QA sets only. Release: patch 0.14.2 → 0.14.3 proposed (Q1).
-- **Open:** `10 tasks not done`, see §3. Q1-Q3 (§5) answered by the user at approval (2026-10-16): Q1 (a) 0.14.3, Q2 (a) fence read before the release commit, Q3 (a) Status word exact, Markdown marks ignored.
+- **Open:** `1 task not done` (T10, waits for `/demo-day` rates), see §3. Q1-Q3 (§5) answered by the user at approval (2026-10-16): Q1 (a) 0.14.3, Q2 (a) fence read before the release commit, Q3 (a) Status word exact, Markdown marks ignored.
 - **Binding ruling:** §3 Task Breakdown for current task status; a plan revision after review/QA findings updates §1/§3 in place, never a new section
 - **On conflict:** the numbered body below wins for everything except `Status`; log the mismatch as a finding at the next `/peer-review` and proceed — don't stop on it.
 
