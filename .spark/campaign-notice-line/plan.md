@@ -95,6 +95,8 @@
     - The 6 of 6 listing floor has no slack.
   - **Nothing is enforced.** The line stays an instruction.
 
+- **Deviations (recorded at review round 1, F1; ruling: user, 2026-10-20, "ok mache weiter" on the offered default):** D2(e) named "unreadable or unknown" Status; the shipped W2 text (`SKILL.md:66-68`) names only "unreadable" and prints every non-live entry's Status "as written". A value outside the six (e.g. `runing`) is therefore printed as written and, not being `approved`/`running`, is never live. Spec A5's "shown as Status not readable" holds only for a Status that cannot be read at all. D4 bars a third development wording, so this is accepted as is; it stays unscored (A5) and a wording fix, if wanted, belongs to a later increment. Edge session evidence: `evidence.md` T6 (A5).
+
 ## 2. Affected Components
 
 - **Edited:**
