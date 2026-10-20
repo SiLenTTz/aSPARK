@@ -95,7 +95,7 @@
     - The 6 of 6 listing floor has no slack.
   - **Nothing is enforced.** The line stays an instruction.
 
-- **Deviations (recorded at review round 1, F1; ruling: user, 2026-10-20, "ok mache weiter" on the offered default):** D2(e) named "unreadable or unknown" Status; the shipped W2 text (`SKILL.md:66-68`) names only "unreadable" and prints every non-live entry's Status "as written". A value outside the six (e.g. `runing`) is therefore printed as written and, not being `approved`/`running`, is never live. Spec A5's "shown as Status not readable" holds only for a Status that cannot be read at all. D4 bars a third development wording, so this is accepted as is; it stays unscored (A5) and a wording fix, if wanted, belongs to a later increment. Edge session evidence: `evidence.md` T6 (A5).
+- **Deviations (recorded at review round 1, F1; ruling: user, 2026-10-20, answer to the explicit either/or question: "Wording-Fix in die /demo-day-Runde"):** D2(e) named "unreadable or unknown" Status; the shipped W2 text (`SKILL.md:66-68`) names only "unreadable" and prints every non-live entry's Status "as written". A value outside the six (e.g. `runing`) is therefore printed as written and, not being `approved`/`running`, is never live. Spec A5's "shown as Status not readable" is therefore not met for such a value. The user ruled this is **not accepted as is**: a wording fix goes to the fix round after `/demo-day` (`/increment` fix-mode), despite D4's bar on a third *development* wording, which governed the development matrix and not a fix. Until then it stays unscored (A5). T6's DoD (`plan.md:129`) describes the pre-fix behaviour. Edge session evidence: `evidence.md` T6 (A5).
 
 ## 2. Affected Components
 
