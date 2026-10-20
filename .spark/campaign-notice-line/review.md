@@ -5,7 +5,7 @@
 | **Phase** | Review |
 | **Owner** | Reviewer (`/peer-review`) |
 | **Input** | `origin/main...HEAD` (`4966076..3770297`), `.spark/campaign-notice-line/plan.md` |
-| **Status** | `changes-requested` |
+| **Status** | `passed` |
 | **Round** | 2 |
 | **Date** | 2026-10-20 |
 
@@ -101,4 +101,4 @@ re-review, edit this same checklist in place — never duplicate it as a second 
 - [x] All plan deviations documented and ruled (F1 documented at `plan.md:98`; user ruled explicitly: wording fix routed to the fix round after `/demo-day`, F8 closed)
 - [x] Test suite runs green (no suite by constitution §4; `claude plugin validate .` passes, structural checks re-run)
 - [x] Line budget respected: Ist 104 / Soll ~150 (excluding HTML comments)
-- [ ] Status set to `passed`
+- [x] Status set to `passed` (user approved the gate, 2026-10-20)
