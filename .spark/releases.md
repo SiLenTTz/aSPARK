@@ -10,3 +10,4 @@
 | v0.14.0 | 2026-10-07 | campaign-start | 1ce9dc6 | https://github.com/a-lottes/aSPARK/pull/72 |
 | v0.14.1 | 2026-10-12 | campaign-draft-polish | 7796f1d | https://github.com/a-lottes/aSPARK/pull/74 |
 | v0.14.2 | 2026-10-14 | campaign-notice-statuses | f7f1120 | https://github.com/a-lottes/aSPARK/pull/77 |
+| v0.14.3 | 2026-10-24 | campaign-notice-line | b2c1921 | https://github.com/a-lottes/aSPARK/pull/80 |
