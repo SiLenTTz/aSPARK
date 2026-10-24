@@ -5,16 +5,16 @@
 | **Phase** | Keep |
 | **Owner** | Release Manager (`/go-live`) |
 | **Input** | `review.md` (`passed`), `qa.md` (`passed`) |
-| **Status** | `preparing` |
+| **Status** | `handed-off` |
 | **Version** | v0.14.3 (proposed only; no tag before merge, `pr` mode) |
-| **Date** | 2026-10-21 |
-| **Commit** | pending: the release commit, filled after the go |
-| **PR** | pending: opened only after the user's go |
+| **Date** | 2026-10-24 |
+| **Commit** | b2c1921 (release commit) |
+| **PR** | https://github.com/a-lottes/aSPARK/pull/80 |
 
 **Handoff**
-- **Status:** `preparing` (authoritative for `Status` and `Version`)
-- **Summary:** `/campaign` now lists every other non-live campaign in its closing report; patch bump 0.14.2 to 0.14.3, prepared, awaiting go to push and open the PR.
-- **Open:** `outstanding` — see KEEP GATE; push, PR and approver request await the user's go
+- **Status:** `handed-off` (authoritative for `Status` and `Version`)
+- **Summary:** `/campaign` now lists every other non-live campaign in its closing report; patch bump 0.14.2 to 0.14.3, PR #80 opened, awaiting review and merge.
+- **Open:** `outstanding` — merge, real tag v0.14.3 and approval, owned by `a-lottes` (approver), outside our control
 - **Binding ruling:** §3 Release Actions and the KEEP GATE below carry the final ruling.
 - **On conflict:** the numbered body below wins for everything except `Status`/`Version`; log the mismatch as a finding at the next `/go-live` and proceed — don't stop on it.
 
@@ -52,7 +52,7 @@
 | Action | Result |
 |---|---|
 | Version bump & tag | Proposed v0.14.3 (patch: wording of one closing-report line, no new capability or interface). `.claude-plugin/plugin.json` bumped locally; `marketplace.json` carries no version. No tag in `pr` mode; real tag at/after merge, outside our control. |
-| PR / merge | Pending go: `git push -u origin feat/campaign-notice-line`, then `gh pr create --base main` (self-review by `a-lottes`). PR-open and approver request not yet established. CI: none exists (no workflows). |
+| PR / merge | Executed 2026-10-24: `git push -u origin feat/campaign-notice-line` (staleness re-checked: merge-base = origin/main = `4966076`), `gh pr create --base main` opened https://github.com/a-lottes/aSPARK/pull/80 (read-only: `gh pr view` OPEN, base main). No reviewer requested (self-review by `a-lottes`). CI: none exists. Not merged, no tag. |
 | Deploy | N/A — handed-off, no deploy |
 | Post-release smoke check | N/A — handed-off, no deploy |
 
@@ -70,7 +70,7 @@ Rollback: before merge, close the PR and delete the branch; after merge, `git re
 
 - [x] All pre-flight checks passed at release time
 - [x] Changelog written in user-facing language
-- [ ] Release actions executed and verified — pending go (PR, approver request); rollback path written
+- [x] Release actions executed and verified: push and PR #80 open (PR-open established by `gh pr view`); approver not formally requested (self-review), no CI exists; rollback path written
 - [x] Learnings recorded
 - [x] Line budget respected: Ist       76 / Soll ~100 (excluding HTML comments)
-- [ ] Status set to `handed-off` — pending go; will name: merge, real tag and approval outstanding, owned by `a-lottes` (approver), outside our control
+- [x] Status set to `handed-off`: merge, real tag and approval outstanding, owned by `a-lottes` (approver), outside our control
