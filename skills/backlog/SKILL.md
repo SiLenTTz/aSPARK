@@ -25,8 +25,10 @@ other input is needed.
 
 1. **Gather the sources yourself.** The `product-owner` agent cannot read the
    repo's remote or run `gh`. Read:
-   - `docs/` (every Markdown/text document; note file names and section
-     headings, as source references need them),
+   - `docs/` (Markdown/text documents only; read each section's heading and
+     lead paragraph, not full bodies, and note file names and headings, as
+     source references need them. Skip binary or non-text files and name what
+     was skipped in the step 8 report),
    - `.spark/constitution.md` and `ROADMAP.md` if present.
    - **If there is no `docs/` (or it holds no readable documents) and no
      constitution**, name `/charter` as the first step and stop there. Never
@@ -34,11 +36,12 @@ other input is needed.
 2. **Delegate to the Product Owner.** Invoke the `product-owner` agent in its
    *propose backlog* mode (`## Proposing a Backlog` in its definition) with the
    document excerpts (file + section headings), the constitution excerpt or
-   "none", and the user's steer.
+   "none", `ROADMAP.md` if present, and the user's steer.
 3. **Show the list as a plan.** Present it as a numbered, ordered table: title,
    problem statement, size (S/M/L), dependencies, source reference
    `docs/<file>#<section>`. Drop any item that arrives without a source
-   reference: nothing is invented. This check is an instruction to you and
+   reference, or whose reference names no file and heading you gathered in
+   step 1: nothing is invented. This check is an instruction to you and
    the agent, not an enforcement; look at every row yourself.
 4. **Let the user edit.** They may drop, merge, reorder or reword items.
    Apply the edits (re-invoke the agent for merges/rewording if useful) and
@@ -53,11 +56,18 @@ other input is needed.
      Echo them (or "no labels"). Apply them with `--label`; do not assume any
      particular automation behind them.
 6. **Ask for explicit confirmation to file**, naming the count, repo and
-   labels. Only a yes in this conversation permits step 7.
+   labels. If the repo is public, say so here, once: the content of `docs/`
+   goes into the issue bodies. Only a yes in this conversation permits step 7.
 7. **File in order.** For each item run
-   `gh issue create --repo <owner/repo> --title "<title>" --body "<body>"`
-   (plus `--label` per label). Record each returned issue number; in later
-   bodies, refer to dependencies already filed as `#<n>`, otherwise by title.
+   `gh issue create --repo <owner/repo> --title '<title>' --body-file -`
+   (plus `--label` per label), feeding the body on stdin from a
+   single-quoted heredoc (`<<'ASPARK_BACKLOG_BODY'`). Never put text from
+   `docs/` inside double quotes: the shell would run any backtick or `$(...)`
+   in it. If any body line equals the delimiter, pick another one: that line
+   would end the heredoc and the shell would run the rest. In the
+   single-quoted title, write each `'` as `'\''`. Record each returned issue
+   number; in later bodies, refer to dependencies already filed as `#<n>`,
+   otherwise by title.
    The body is exactly:
 
    ```
@@ -66,7 +76,7 @@ other input is needed.
 
    **Size:** <S|M|L>
    **Depends on:** <#n, titles, or none>
-   **Source:** docs/<file>#<section>
+   **Source:** <docs/<file>#<section>, or the constitution / ROADMAP.md section>
 
    generation: 0
    ```
@@ -74,10 +84,12 @@ other input is needed.
    This is the shape `/story-time <n>` imports as the idea. If `gh` is
    missing, unauthenticated or a call fails, **stop**, report the real error
    and list the issues created so far. Never retry silently or claim success.
+   If the user fixes the cause in this conversation, offer to file only the
+   items not yet created, re-confirming per step 6, so nothing is duplicated.
 8. **Close with a report** stating: repo, issues created (number + title),
-   labels applied, items dropped for lack of a source, and that
-   `/story-time <n>` or `/spark` starts any of them. If an issue body is
-   public, say so once before filing: the content of `docs/` goes into it.
+   labels applied, items dropped for lack of a source, files in `docs/`
+   skipped as non-text in step 1 (or "none"), and that
+   `/story-time <n>` or `/spark` starts any of them.
 
 ## Rules
 

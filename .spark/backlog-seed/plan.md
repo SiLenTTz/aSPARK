@@ -22,15 +22,15 @@
 - **Consequences:** One more ceremony; checks (source refs) are best-effort prompt material.
 
 ## 3. Task Breakdown
-| # | Task | Covers | Definition of done | Status |
-|---|---|---|---|---|
-| T1 | Add `skills/backlog/SKILL.md` | US-1..5 | steps: gather, delegate, edit loop, confirm, file, report; rules; handoff | done |
-| T2 | Add propose-backlog section to `agents/product-owner.md` | US-2 | item fields, source rule, no invention | done |
-| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer, ROADMAP | NFR-2 | mentions consistent | done |
-| T4 | Verify: grep consistency, dry-read vs each AC | all | AC table in evidence | done |
+| # | Task | Covers | Definition of done | Status | Story |
+|---|---|---|---|---|---|
+| T1 | Add `skills/backlog/SKILL.md` | US-1..5 | steps: gather, delegate, edit loop, confirm, file, report; rules; handoff | done | US-1..5 |
+| T2 | Add propose-backlog section to `agents/product-owner.md` | US-2 | item fields, source rule, no invention | done | US-2 |
+| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP: no new item; its "ten ceremonies" stays, `/backlog` is counted separately; deviation recorded per review F9/F20 and accepted by the user) | NFR-2 | mentions consistent | done | US-1..5 |
+| T4 | Verify: grep consistency, dry-read vs each AC | all | AC table in evidence | done | US-1..5 |
 
 ## 4. Test Strategy
-No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. No live issue filing (would write to the real tracker).
+No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) recorded in `evidence.md`. Run in rounds 2-3: the negative case as a session (E7); steps 1-6 with a real user, one edit applied, declined at step 6, the list shown abridged rather than as step 3's full table (E6, E8); the step 7 command shape probed (E3). Step 7 is not filed live (would write to the real tracker).
 
 ## 5. Risks
 Agent may skip source refs (prompt material, best-effort, disclosed in the skill). Partial filing failure: skill reports created issues.
