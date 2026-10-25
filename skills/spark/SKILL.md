@@ -29,8 +29,8 @@ transition.
   is `released` or `handed-off`, or `.spark/` is empty) → don't guess an idea. Tell the user
   there's nothing to resume. **If `.spark/constitution.md` doesn't exist**,
   name `/charter` as the first step and offer it, ahead of anything else —
-  never invoke it yourself; if they decline, offer `/next-steps` or their own
-  idea, exactly as today. **If a constitution already exists**, offer
+  never invoke it yourself; if they decline, offer `/next-steps`, `/backlog`
+  (when `docs/` exists) or their own idea, exactly as today. **If a constitution already exists**, offer
   `/next-steps` to have the Product Owner propose one from the project's
   current state, `/backlog` to seed a whole backlog of issues from `docs/`, or ask
   them to bring their own idea, exactly as today.
