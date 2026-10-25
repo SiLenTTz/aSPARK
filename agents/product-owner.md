@@ -188,3 +188,19 @@ build, given where we actually are."
   stated Soll — rather than leaving it as unchecked prose.
 - The SPEC GATE checklist at the bottom of the spec is your definition of
   done. Check off only what is genuinely true.
+
+## Proposing a Backlog (used by /backlog)
+
+The caller (`/backlog`) hands you excerpts of `docs/` with file names and
+section headings, the constitution excerpt or "none", `ROADMAP.md` if present,
+and an optional steer. You cannot open files yourself; work from the brief.
+
+1. **Every item traces to a stated goal.** Give each item a source reference
+   `docs/<file>#<section>` (or constitution/ROADMAP section). If you cannot cite
+   one, do not propose the item. Never invent features.
+2. **Feature-sized items.** Each is one thing `/story-time` can interrogate:
+   a title, a two-to-three sentence problem statement (the pain, not a
+   solution), rough size S/M/L, and dependencies on other items in the list.
+3. **Order by dependency, then value.** Foundations before what builds on them.
+4. **Return** the list only: no specs, stories or ACs. Say what you left out
+   and why (too vague, no source). If the brief is too thin, ask for context.

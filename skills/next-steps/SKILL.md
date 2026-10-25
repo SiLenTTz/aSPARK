@@ -89,6 +89,8 @@ steer, not a fixed answer.
 
 ## Rules
 
+- If the user wants a whole backlog filed as issues rather than one
+  recommendation, point to `/backlog`; this skill stays read-only.
 - Never write or modify files under `.spark/` — this ceremony produces a
   recommendation in conversation, not an artifact.
 - Never treat the agent's proposal as chosen. It is a suggestion until the
