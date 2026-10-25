@@ -32,7 +32,8 @@ transition.
   never invoke it yourself; if they decline, offer `/next-steps` or their own
   idea, exactly as today. **If a constitution already exists**, offer
   `/next-steps` to have the Product Owner propose one from the project's
-  current state, or ask them to bring their own idea, exactly as today.
+  current state, `/backlog` to seed a whole backlog of issues from `docs/`, or ask
+  them to bring their own idea, exactly as today.
 
 ## The Phase Map
 

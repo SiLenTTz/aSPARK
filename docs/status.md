@@ -282,7 +282,7 @@ was an explicit, informed shipping decision, not an oversight.
 - [x] README with concept, team and usage guide
 - [x] Artifact templates (`templates/`) — constitution, spec, plan, review-report, qa-report, release-notes, each (bar the constitution) with its gate checklist
 - [x] The seven team agents (`agents/`) — facilitator, product-owner, designer, engineering-manager, reviewer, qa-tester, release-manager
-- [x] The ten ceremony skills (`skills/`) — charter, next-steps, story-time, look-and-feel, sprint-plan, increment, peer-review, demo-day, go-live, spark
+- [x] The eleven ceremony skills (`skills/`) — charter, next-steps, backlog (written, never run live: not yet filed a real issue), story-time, look-and-feel, sprint-plan, increment, peer-review, demo-day, go-live, spark
 - [x] Spec-driven core — constitution, Clarify pass, NFRs, `US-`/`AC-`/`NFR-` traceability
 - [x] Situational lenses (`lenses/`), dogfooded through aSPARK's own loop
 - [x] The `/spark` orchestrator — full loop with gate stops, resume support and feedback-loop escalation

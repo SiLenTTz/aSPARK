@@ -104,6 +104,7 @@ Review or QA findings go back to the Developer and the phase re-runs. After thre
 |---|---|---|
 | `/charter` | 📜 Facilitator | Sets the project's standing principles and profile in `constitution.md`, once. |
 | `/next-steps` | 🧭 Product Owner | No idea in hand? Surveys the project and proposes one concrete next feature. |
+| `/backlog` | 🧭 Product Owner | Documents but no backlog? Reads `docs/`, proposes an ordered list you edit, then files it as GitHub issues `/story-time <n>` can import. |
 | `/story-time` | 🧭 Product Owner | Interrogates your idea, no yes-man. Writes stories, ACs and NFRs into `spec.md`. Pass a GitHub issue number (`/story-time 42`) to start from that ticket instead of retyping it. |
 | `/look-and-feel` | 🎨 Designer | Usability heuristics, consistency, accessibility. Adds a design section to the spec. |
 | `/sprint-plan` | 🏗️ Engineering Manager | Locks the architecture, cuts ordered tasks into `plan.md`. |

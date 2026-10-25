@@ -27,6 +27,12 @@ system picture) is what the Product Owner and Engineering Manager cite instead
 of each re-deriving the project's own facts on every feature.
 
 
+`/backlog` is the optional bridge for document-first projects: it reads `docs/`,
+the constitution and `ROADMAP.md`, lets the user edit a proposed ordered list,
+and on explicit confirmation files it as GitHub issues (each with a source
+reference and a `generation: 0` line) that `/story-time <n>` imports. Its source
+checks are prompt material, best-effort, not enforcement.
+
 ## Context Budget: What Each Ceremony Reads
 
 Artifacts grow monotonically; a prompt does not. Every ceremony states what it
