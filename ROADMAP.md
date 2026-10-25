@@ -32,7 +32,7 @@ is worth more than a patch. Reports where it went badly are worth the most.
 
 | | |
 |---|---|
-| **The SPARK loop** | Five phases, five gates, eleven ceremonies, seven agents. End-to-end on a sample app: PO → Designer → EM → build → review → real-browser QA → release. |
+| **The SPARK loop** | Five phases, five gates, ten ceremonies, seven agents. End-to-end on a sample app: PO → Designer → EM → build → review → real-browser QA → release. |
 | **Spec-driven core** | Project constitution (`/charter`), the Specify-phase Clarify pass, non-functional requirements, and the `US-` / `AC-` / `NFR-` / `T` / `F` ID chain running unbroken from spec through plan, review and QA. |
 | **Situational lenses** | Eight lenses activated by project **type** and **characteristics**, applied by the agents who already own each phase. New concerns are add-a-file: no agent is rewritten. |
 | **Optional tools** | `tools/`, wired into `/sprint-plan`, `/peer-review` and `/demo-day`. Dogfooded in both directions — the absent case first, in a repo without the tool, where nothing may change. |
