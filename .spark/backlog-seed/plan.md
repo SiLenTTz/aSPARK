@@ -25,12 +25,12 @@
 | # | Task | Covers | Definition of done | Status | Story |
 |---|---|---|---|---|---|
 | T1 | Add `skills/backlog/SKILL.md` | US-1..5 | steps: gather, delegate, edit loop, confirm, file, report; rules; handoff | done | US-1..5 |
-| T2 | Add propose-backlog section to `agents/product-owner.md` | US-2 | item fields, source rule, no invention | done | US-1..5 |
-| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP dropped: no item exists to update; deviation accepted in review round 1, F9) | NFR-2 | mentions consistent | done | US-1..5 |
+| T2 | Add propose-backlog section to `agents/product-owner.md` | US-2 | item fields, source rule, no invention | done | US-2 |
+| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP dropped: no item exists to update; deviation recorded per review round 1 F9 and accepted by the user at round 2; see review F20) | NFR-2 | mentions consistent | done | US-1..5 |
 | T4 | Verify: grep consistency, dry-read vs each AC | all | AC table in evidence | done | US-1..5 |
 
 ## 4. Test Strategy
-No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) in `evidence.md`; only step 7 is not filed live (would write to the real tracker).
+No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) recorded in `evidence.md`. So far only step 2 ran and the step 7 command shape was probed; the negative case was read, not run, and steps 3-6 have not run (review F2). Step 7 is not filed live (would write to the real tracker).
 
 ## 5. Risks
 Agent may skip source refs (prompt material, best-effort, disclosed in the skill). Partial filing failure: skill reports created issues.

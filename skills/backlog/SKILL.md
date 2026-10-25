@@ -61,8 +61,10 @@ other input is needed.
 7. **File in order.** For each item run
    `gh issue create --repo <owner/repo> --title '<title>' --body-file -`
    (plus `--label` per label), feeding the body on stdin from a
-   single-quoted heredoc (`<<'EOF'`). Never put text from `docs/` inside
-   double quotes: the shell would run any backtick or `$(...)` in it. In the
+   single-quoted heredoc (`<<'ASPARK_BACKLOG_BODY'`). Never put text from
+   `docs/` inside double quotes: the shell would run any backtick or `$(...)`
+   in it. If any body line equals the delimiter, pick another one: that line
+   would end the heredoc and the shell would run the rest. In the
    single-quoted title, write each `'` as `'\''`. Record each returned issue
    number; in later bodies, refer to dependencies already filed as `#<n>`,
    otherwise by title.
@@ -85,7 +87,8 @@ other input is needed.
    If the user fixes the cause in this conversation, offer to file only the
    items not yet created, re-confirming per step 6, so nothing is duplicated.
 8. **Close with a report** stating: repo, issues created (number + title),
-   labels applied, items dropped for lack of a source, and that
+   labels applied, items dropped for lack of a source, files in `docs/`
+   skipped as non-text in step 1 (or "none"), and that
    `/story-time <n>` or `/spark` starts any of them.
 
 ## Rules
