@@ -30,7 +30,7 @@
 | T4 | Verify: grep consistency, dry-read vs each AC | all | AC table in evidence | done | US-1..5 |
 
 ## 4. Test Strategy
-No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) recorded in `evidence.md`. So far only step 2 ran and the step 7 command shape was probed; the negative case was read, not run, and steps 3-6 have not run (review F2). Step 7 is not filed live (would write to the real tracker).
+No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) recorded in `evidence.md`. Round 2 ran the negative case and steps 1-6 in order, declined at step 6 (E5, E6); the step 7 command shape was probed (E3). Step 7 is not filed live (would write to the real tracker).
 
 ## 5. Risks
 Agent may skip source refs (prompt material, best-effort, disclosed in the skill). Partial filing failure: skill reports created issues.
