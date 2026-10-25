@@ -26,7 +26,7 @@
 |---|---|---|---|---|---|
 | T1 | Add `skills/backlog/SKILL.md` | US-1..5 | steps: gather, delegate, edit loop, confirm, file, report; rules; handoff | done | US-1..5 |
 | T2 | Add propose-backlog section to `agents/product-owner.md` | US-2 | item fields, source rule, no invention | done | US-2 |
-| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP: no new item; only the ceremony count at `ROADMAP.md:35` changed, ten to eleven, review F20; deviation recorded per review round 1 F9 and accepted by the user at round 2) | NFR-2 | mentions consistent | done | US-1..5 |
+| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP: no new item; its "ten ceremonies" stays, `/backlog` is counted separately; deviation recorded per review F9/F20 and accepted by the user) | NFR-2 | mentions consistent | done | US-1..5 |
 | T4 | Verify: grep consistency, dry-read vs each AC | all | AC table in evidence | done | US-1..5 |
 
 ## 4. Test Strategy
