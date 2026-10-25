@@ -26,11 +26,11 @@
 |---|---|---|---|---|---|
 | T1 | Add `skills/backlog/SKILL.md` | US-1..5 | steps: gather, delegate, edit loop, confirm, file, report; rules; handoff | done | US-1..5 |
 | T2 | Add propose-backlog section to `agents/product-owner.md` | US-2 | item fields, source rule, no invention | done | US-2 |
-| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP dropped: no item exists to update; deviation recorded per review round 1 F9 and accepted by the user at round 2; see review F20) | NFR-2 | mentions consistent | done | US-1..5 |
+| T3 | Docs: README table, `docs/workflow.md`, `/spark` and `/next-steps` empty-state pointer (ROADMAP: no new item; only the ceremony count at `ROADMAP.md:35` changed, ten to eleven, review F20; deviation recorded per review round 1 F9 and accepted by the user at round 2) | NFR-2 | mentions consistent | done | US-1..5 |
 | T4 | Verify: grep consistency, dry-read vs each AC | all | AC table in evidence | done | US-1..5 |
 
 ## 4. Test Strategy
-No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) recorded in `evidence.md`. Round 2 ran the negative case and steps 1-6 in order, declined at step 6 (E5, E6); the step 7 command shape was probed (E3). Step 7 is not filed live (would write to the real tracker).
+No runtime; verify by reading each AC against SKILL.md text, and `gh issue create` argument shape by inspection. Dry run per constitution §4 (negative case first, steps 1-6 declining the confirmation) recorded in `evidence.md`. So far: the negative precondition was checked but the stop itself was read (E5); steps 1, 2, 5 and 6 ran, declined at step 6, while step 3's showing of the list and step 4 never ran (E6, review F2); the step 7 command shape was probed (E3). Step 7 is not filed live (would write to the real tracker).
 
 ## 5. Risks
 Agent may skip source refs (prompt material, best-effort, disclosed in the skill). Partial filing failure: skill reports created issues.
