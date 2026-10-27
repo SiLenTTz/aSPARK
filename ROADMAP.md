@@ -59,8 +59,10 @@ re-open only on a new argument or observation, such as a recorded single-reviewe
 **An observability lens** · [#15](https://github.com/a-lottes/aSPARK/issues/15)
 Between the `api` lens (the contract) and the `security` lens (what must never be logged) sits a concern
 nobody owns: whether a correct, secure, well-specified service can be diagnosed once it is running.
-Alongside the accessibility ([#6](https://github.com/a-lottes/aSPARK/issues/6)) and performance
-([#7](https://github.com/a-lottes/aSPARK/issues/7)) lens proposals.
+**Written, not yet Shipped:** `lenses/observability.md` exists and was dry-run once on a sample `api`
+project (not a public run), so by this file's own vocabulary it stays under Next until a real `api`
+exercises it. The accessibility lens (#6) has since shipped; the performance lens
+([#7](https://github.com/a-lottes/aSPARK/issues/7)) is still a proposal.
 
 **In-flight doubt inside `/increment`** · [#14](https://github.com/a-lottes/aSPARK/issues/14)
 Doubt is currently a *phase*: `/peer-review` runs after the build. So a wrong premise adopted in task 2
