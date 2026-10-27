@@ -7,16 +7,16 @@
 | **Phase** | Keep |
 | **Owner** | Release Manager (`/go-live`) |
 | **Input** | `review.md` (`passed`), `qa.md` (`passed`) |
-| **Status** | `preparing` |
-| **Version** | v0.16.0 (proposed) |
+| **Status** | `handed-off` |
+| **Version** | v0.16.0 |
 | **Date** | 2026-10-27 |
-| **Commit** | `pending` — set after the release commit exists and the tag is made post-merge |
-| **PR** | `pending` — opened only on the person's go |
+| **Commit** | `9dc6702` (`9dc67028938bd975d3093555af3f8c2bff1c3969`) on `factory/release`; tag `v0.16.0` is made on the merge commit after the merge |
+| **PR** | https://github.com/a-lottes/aSPARK/pull/103 |
 
 **Handoff**
 - **Status:** mirrors the header table above (authoritative for `Status` and `Version`).
 - **Summary:** `/backlog` turns `docs/` into an ordered, user-edited list filed as GitHub issues; proposed v0.16.0.
-- **Open:** `3 outstanding` — go to publish; filing (AC-4.x) never run live; the `0.15.0` bump from adversarial-gates has no release record.
+- **Open:** `3 outstanding` — merge of PR #103 by a person, then tag `v0.16.0`; filing (AC-4.x) never run live; the `0.15.0` bump from adversarial-gates has no release record.
 - **Binding ruling:** §3 Release Actions and the KEEP GATE below carry the final ruling.
 - **On conflict:** the numbered body below wins for everything except `Status`/`Version`; log the mismatch as a finding at the next `/go-live` and proceed — don't stop on it.
 
@@ -50,8 +50,8 @@
 
 | Action | Result |
 |---|---|
-| Version bump & tag | Proposed 0.15.0 -> 0.16.0 in `plugin.json`, committed locally. Minor: new optional skill (constitution §5). Review F10 said 0.15.0, but main already carries 0.15.0 from adversarial-gates (`0c9144a`, no release record), so 0.16.0 avoids one number naming two surfaces. No tag now; tag `v0.16.0` after merge. |
-| PR / merge | Pending the go. Would run: `git push -u origin factory/release`, `gh pr create --base main`. Nothing pushed. |
+| Version bump & tag | Proposed 0.15.0 -> 0.16.0 in `plugin.json`, committed locally. Minor: new optional skill (constitution §5). Review F10 said 0.15.0, but main already carries 0.15.0 from adversarial-gates (`0c9144a`, no release record), so 0.16.0 avoids one number naming two surfaces. No tag yet; tag `v0.16.0` after merge. |
+| PR / merge | Go given by the person at the Leitstand. Executed by the Factory: pushed `factory/release` at `9dc6702`; opened https://github.com/a-lottes/aSPARK/pull/103 into `main`. A person merges it; not merged yet. After the merge the Factory tags the merge commit `v0.16.0`; no tag exists yet. |
 | Deploy | N/A — handed-off, no deploy |
 | Post-release smoke check | N/A — handed-off, no deploy |
 
@@ -69,7 +69,7 @@ Rollback: before merge, close the PR and delete the branch; after merge, `git re
 
 - [x] All pre-flight checks passed at release time
 - [x] Changelog written in user-facing language
-- [ ] Release actions executed and verified — pending the go
+- [x] Release actions executed: push and PR done; merge and tag still pending (a person merges)
 - [x] Learnings recorded
 - [x] Line budget respected: Ist ~75 / Soll ~100 (excluding HTML comments)
-- [ ] Status set to `handed-off` — pending; stays `preparing`
+- [x] Status set to `handed-off` (release mode `pr`, constitution §7)
