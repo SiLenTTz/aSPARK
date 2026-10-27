@@ -58,7 +58,7 @@
 | `library` | **Active** — consumers install a versioned artifact; every command name, template heading and ID pattern is a promise. Sections 1 (public surface), 2 (compatibility/versioning) and 4 (contract clarity) apply; section 3 (packaging/footprint) is N/A — no bundle, no dependencies | `/story-time`, `/peer-review` |
 | `security` | **Off** — no runtime, no auth, no PII, no network surface, no dependencies to audit; 14 of the lens's 15 checks are inapplicable. The one live concern (instructing agents to execute an external command) is carried as a constraint in §3/§6 instead | — |
 | `seo`, `ux` | Off — no website, no web-app, no UI of any kind | — |
-| `api` | Off — no route handlers, no OpenAPI spec, no service | — |
+| `api`, `observability` | Off — no route handlers, no OpenAPI spec, no service, nothing deployed to diagnose | — |
 | `cli` | Off — no `bin`, no process, no stdout/stderr or exit codes of our own; slash commands are prompts, not a terminal entrypoint | — |
 | `i18n`, `data` | Off — single-locale (English), no database, no persistence | — |
 

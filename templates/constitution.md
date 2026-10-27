@@ -24,7 +24,7 @@
 <!-- What kind of software this is, and which situational concern-checklists ("lenses") therefore apply.
      The Facilitator grounds this in the repo (see the detection signals in
      `${CLAUDE_PLUGIN_ROOT}/lenses/README.md`); the user confirms. Lenses activate two ways: from the
-     project TYPE (seo←website, ux←web-app, api←api, cli←cli, library←library) and from CHARACTERISTICS —
+     project TYPE (seo←website, ux←web-app, api←api, observability←api, cli←cli, library←library) and from CHARACTERISTICS —
      see the `Activates` column of `${CLAUDE_PLUGIN_ROOT}/lenses/README.md`'s "Characteristics"
      detection-signals table for the current mapping. A project can be several
      types and carry several characteristics. Lenses are applied by the existing agents in the phases they own —
@@ -42,7 +42,7 @@
 | `ux` | e.g. active — the dashboard is app-like; interaction is the product | `/story-time`, `/look-and-feel`, `/demo-day` |
 | `security` | e.g. active — handles auth and PII on the public internet | `/story-time`, `/peer-review`, `/demo-day` |
 | `data` | e.g. active — Postgres-backed; migrations and retention matter | `/story-time`, `/peer-review` |
-| *(others)* | e.g. `api`/`cli`/`library`/`i18n` off — no API, single-locale | — |
+| *(others)* | e.g. `api`/`observability`/`cli`/`library`/`i18n` off — no API, single-locale | — |
 
 - **Active-lens load:** _N_ lenses active.
   <!-- State the count. There is no cap — a project legitimately carries several. But when 4 OR MORE are

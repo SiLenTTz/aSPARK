@@ -43,7 +43,7 @@ website, a web-app or an api alike, as soon as it handles auth or PII). The
 profile records both, so:
 
 - **Type-triggered lenses** declare `applies-to: [<type>]` — `seo`←`website`,
-  `ux`←`web-app`/`website`, `api`←`api`, `cli`←`cli`, `library`←`library`.
+  `ux`←`web-app`/`website`, `api`←`api`, `cli`←`cli`, `library`←`library`, `observability`←`api`.
 - **Characteristic-triggered lenses** declare `triggers: [<characteristic>]` —
   see the *Characteristics* detection-signals table's `Activates` column below
   for the current mapping; it is the single declaration of this fact, not
@@ -76,7 +76,7 @@ and carries any number of characteristics.
 |---|---|
 | `website` (public, indexable) | SSR/SSG framework with page routes (Next.js, Astro, Nuxt, SvelteKit, Gatsby, Hugo/Jekyll/Eleventy) or multi-page HTML; `robots.txt`, `sitemap.xml`, `public/` marketing routes; content meant to be found by search engines |
 | `web-app` (app-like frontend) | SPA (Vite/CRA React·Vue·Svelte without SSR), routes behind auth, dashboard/tool UI; indexability is not a goal |
-| `api` / backend service | Express·Fastify·Nest·FastAPI·Flask·Spring route handlers, OpenAPI spec, no UI |
+| `api` / backend service | Express·Fastify·Nest·FastAPI·Flask·Spring route handlers, OpenAPI spec, no UI (also activates `observability`) |
 | `cli` | `bin` entry in `package.json`, `commander`/`click`/`argparse`, terminal entrypoint |
 | `library` | `main`/`exports` published package, no `bin`, no server, consumed as a dependency |
 
@@ -101,6 +101,7 @@ and carries any number of characteristics.
 | [`api.md`](api.md) | type `api` | Resource/method design, error-envelope consistency, versioning & breaking-change detection, auth surface |
 | [`cli.md`](cli.md) | type `cli` | Help/discoverability, stdout/stderr & scriptability, exit codes, safety flags |
 | [`library.md`](library.md) | type `library` | Public API surface, semver/deprecation discipline, packaging & footprint, contract clarity |
+| [`observability.md`](observability.md) | type `api` | Diagnosability of a running service: structured logs, correlation IDs, health/readiness, metrics, alertable failure signals. Silent for `library`, `cli`, `website`, `web-app`; logging *content* stays with `security` |
 | [`security.md`](security.md) | char. `handles-auth`, `is-public`, `handles-payments`, `handles-pii` | Depth beyond the Reviewer baseline: header/transport hardening, auth lifecycle, authz matrix, supply chain, PII/privacy |
 | [`i18n.md`](i18n.md) | char. `is-multilingual` | Externalized strings, locale-aware formatting, text-expansion & RTL layout |
 | [`data.md`](data.md) | char. `has-database` | Migration safety, integrity/transactions, indexing at scale, retention & recovery |
