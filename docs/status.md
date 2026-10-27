@@ -267,6 +267,14 @@ was an explicit, informed shipping decision, not an oversight.
 | **Evidence** | [`.spark/adversarial-gates/evidence.md`](../.spark/adversarial-gates/evidence.md): rules committed before the scan, 51 files searched with fixed terms, 10 entries (1 `agent-evaded-gate`, 2 `verdict-rounded-up`, 7 `other`). The one qualifying entry is not enough at any gate, so the outcome is **refuted-with-finding** and every `skills/*/SKILL.md` is byte-identical. A negative-case dry run of `/next-steps` is recorded there. One borderline entry (E2) was ruled `other` at review and would not qualify a gate under any reading. |
 | **State** | **Unproven by design.** Grounding is in-repo trails, not field reports, and it is a search, not a census. Whether a row would fire cannot be tested in Core, and no effectiveness is claimed. The gates remain prompt-enforced; code-level enforcement is the optional sibling [`aspark-guard`](https://github.com/a-lottes/aSPARK-guard)'s concern. Rows apply at no gate today and stay silent everywhere. The stricter-verdict standard for `/peer-review` and `/demo-day` is planned, not built. A second, independent reviewer is not built; re-open only on a new argument or observation, such as a recorded single-reviewer miss. |
 
+## Stricter verdicts (anti-generosity standard)
+
+| | |
+|---|---|
+| **Scope** | `standards/anti-generosity.md` (40 lines), passed by literal path in step 2 of `/peer-review` and `/demo-day` on every run, plus one line in each skill's present step ("tell the user if the report does not name it"). No agent, template or constitution change. Silent in all other ceremonies. |
+| **Evidence** | [`.spark/adversarial-gates-standard/evidence.md`](../.spark/adversarial-gates-standard/evidence.md): negative baseline (no `standards/` reference before the edit), structural checks (line counts, diffs, grep of activation sites). **Live dry runs of both skills: `⚠ not-verified-live`** — no `claude` CLI in the build environment. |
+| **State** | **Shipped, unproven live.** Prompt material: likely, not certain; effect unmeasured, no rate observed. It changes verdict behaviour for installed projects (partial checks become `⚠ not-verified-live`). Gates remain prompt-enforced; code enforcement is `aspark-guard`'s. A second, independent reviewer is not built. |
+
 ## Browser backends for `/demo-day`
 
 | | |
