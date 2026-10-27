@@ -195,9 +195,9 @@ reconciled with it — a follow-up, not part of this diff.
 
 | | |
 |---|---|
-| **Scope** | `lenses/` — the constitution profile detects project **type** (`website`, `web-app`, `api`, `cli`, `library`) and **characteristics** (auth, PII, public, database, multilingual), activating concern checklists (`seo`, `ux`, `api`, `cli`, `library`, `security`, `i18n`, `data`) that the existing agents apply in the phases they own. The constitution is the single source of truth — no constitution means a nudge, never an applied lens. Four or more active lenses flag elevated load. A new concern is add-a-file; no agent is rewritten. |
+| **Scope** | `lenses/` — the constitution profile detects project **type** (`website`, `web-app`, `api`, `cli`, `library`) and **characteristics** (auth, PII, public, database, multilingual), activating concern checklists (`seo`, `ux`, `api`, `cli`, `library`, `security`, `i18n`, `data`, `observability`) that the existing agents apply in the phases they own. The constitution is the single source of truth — no constitution means a nudge, never an applied lens. Four or more active lenses flag elevated load. A new concern is add-a-file; no agent is rewritten. |
 | **Evidence** | Dogfooded through aSPARK's own `/story-time` ([`.spark/situational-lenses/spec.md`](../.spark/situational-lenses/spec.md)). The PO's Clarify pass caught two real defects in the first cut — per-phase fallback detection was over-built and drift-prone, and lens load had no visibility — both fixed before commit. |
-| **State** | **Shipped, unproven in the field.** See *The open gap* below. |
+| **State** | **Shipped, unproven in the field.** See *The open gap* below. The `observability` lens (type `api`; Specify + Review) was added afterwards and is **written and dry-run only** — see [`.spark/observability-lens/evidence.md`](../.spark/observability-lens/evidence.md). |
 
 ### The open gap
 
@@ -264,8 +264,16 @@ was an explicit, informed shipping decision, not an oversight.
 | | |
 |---|---|
 | **Scope** | Short rebuttal rows at a ceremony gate, only where the repo's own trails record at least two agent gate evasions at that same gate. **Shipped: none.** The only shipped part is the search itself and its finding. |
-| **Evidence** | [`.spark/adversarial-gates/evidence.md`](../.spark/adversarial-gates/evidence.md): rules committed before the scan, 51 files searched with fixed terms, 10 entries (1 `agent-evaded-gate`, 2 `verdict-rounded-up`, 7 `other`). The one qualifying entry is not enough at any gate, so the outcome is **refuted-with-finding** and every `skills/*/SKILL.md` is byte-identical. A negative-case dry run of `/next-steps` is recorded there. One borderline entry (E2) was ruled `other` at review and would not qualify a gate under any reading. |
-| **State** | **Unproven by design.** Grounding is in-repo trails, not field reports, and it is a search, not a census. Whether a row would fire cannot be tested in Core, and no effectiveness is claimed. The gates remain prompt-enforced; code-level enforcement is the optional sibling [`aspark-guard`](https://github.com/a-lottes/aSPARK-guard)'s concern. Rows apply at no gate today and stay silent everywhere. The stricter-verdict standard for `/peer-review` and `/demo-day` is planned, not built. A second, independent reviewer is not built; re-open only on a new argument or observation, such as a recorded single-reviewer miss. |
+| **Evidence** | [`.spark/adversarial-gates/evidence.md`](../.spark/adversarial-gates/evidence.md): rules committed before the scan, 51 files searched with fixed terms, 10 entries (1 `agent-evaded-gate`, 2 `verdict-rounded-up`, 7 `other`). The one qualifying entry is not enough at any gate, so the outcome is **refuted-with-finding** and no `skills/*/SKILL.md` gained a row (Increment 1 left every skill byte-identical). A negative-case dry run of `/next-steps` is recorded there. One borderline entry (E2) was ruled `other` at review and would not qualify a gate under any reading. |
+| **State** | **Unproven by design.** Grounding is in-repo trails, not field reports, and it is a search, not a census. Whether a row would fire cannot be tested in Core, and no effectiveness is claimed. The gates remain prompt-enforced; code-level enforcement is the optional sibling [`aspark-guard`](https://github.com/a-lottes/aSPARK-guard)'s concern. Rows apply at no gate today and stay silent everywhere. The stricter-verdict standard for `/peer-review` and `/demo-day` shipped separately in Increment 2 (next section). A second, independent reviewer is not built; re-open only on a new argument or observation, such as a recorded single-reviewer miss. |
+
+## Stricter verdicts (anti-generosity standard)
+
+| | |
+|---|---|
+| **Scope** | `standards/anti-generosity.md` (34 lines), passed by literal path in step 2 of `/peer-review` and `/demo-day` on every run, plus one line in each skill's present step ("tell the user if the report does not name it"). No agent, template or constitution change. Silent in all other ceremonies. |
+| **Evidence** | [`.spark/adversarial-gates-standard/evidence.md`](../.spark/adversarial-gates-standard/evidence.md): negative baseline (no `standards/` reference before the edit), structural checks (line counts, diffs, grep of activation sites). **Live dry runs of both skills: `⚠ not-verified-live`** — no `claude` CLI in the build environment. |
+| **State** | **Shipped, unproven live.** Prompt material: likely, not certain; effect unmeasured, no rate observed. It changes verdict behaviour for installed projects (partial checks become `⚠ not-verified-live`). Gates remain prompt-enforced; code enforcement is `aspark-guard`'s. A second, independent reviewer is not built. |
 
 ## Browser backends for `/demo-day`
 
