@@ -29,9 +29,8 @@ limits:
   poll_interval_seconds: 60
 
 tools:
-  # These tools run without asking; all others ask at the Leitstand. Bash in full, so the sessions do not stop
-  # for every shell command; the runner refuses gh itself (not in the image).
-  allow: [Read, Glob, Grep, Edit, Write, TodoWrite, Bash]
+  # These tools run without asking; all others (e.g. Bash) ask at the Leitstand.
+  allow: [Read, Glob, Grep, Edit, Write, TodoWrite, "Bash(git:*)", "Bash(echo:*)", "Bash(python3:*)", "Bash(sed:*)", "Bash(cat:*)"]
 
 dark:                     # mode dark: the line merges on its own when policy, review agent and CI are green
   integration_branch: factory/main    # created from the base; a person merges the release pull request to main
