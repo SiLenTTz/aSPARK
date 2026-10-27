@@ -21,6 +21,6 @@ Prompt material only: the standard makes a strict verdict likely, not certain. *
 - `git diff --numstat -- skills`: 5 added / 1 removed in each of the two skills (cap 12; Inc 1 added none) (NFR-1). Only those two skills changed; no frontmatter, command name or ID changed (NFR-3, NFR-7).
 - `git diff --stat -- agents templates lenses .spark/constitution.md` empty (AC-2.5, AC-2.7).
 - `git ls-files '*.py'` empty; no executable code added (NFR-6). `claude plugin validate .`: `⚠ not-verified-live` (no CLI).
-- AC-2.9: rule 1 cites E3, E4 (`.spark/adversarial-gates/evidence.md`); the banned phrases are labelled "Not grounded in the corpus".
+- AC-2.9: rules 1 and 2 cite E3/E4; the tendency paragraph, rules 3, 4 and the banned phrases are each labelled "not grounded in the corpus".
 - NFR-4: minor bump 0.14.3 → 0.15.0 in `.claude-plugin/plugin.json`; README states the always-on change for installed projects (AC-4.6).
 - Silence: no other skill touched; `/go-live` unaffected.

@@ -123,14 +123,14 @@ Each ceremony can also be run on its own. The artifacts on disk *are* the state,
 ### Gate hardening: searched, no rebuttal rows shipped
 
 The gates are prompt-enforced: an agent can reason its way past one, and Core, being Markdown with no runtime, cannot stop it. Code-level enforcement is the optional sibling [`aspark-guard`](https://github.com/a-lottes/aSPARK-guard)'s concern.
-- Rebuttal rows were to go only where an evasion was actually recorded. A search of this repo's own 51 review, QA and evidence files ([`evidence.md`](.spark/adversarial-gates/evidence.md)) found one recorded gate evasion where the bar was two at the same gate, so **no rows shipped at any gate**; every skill is unchanged.
+- Rebuttal rows were to go only where an evasion was actually recorded. A search of this repo's own 51 review, QA and evidence files ([`evidence.md`](.spark/adversarial-gates/evidence.md)) found one recorded gate evasion where the bar was two at the same gate, so **no rows shipped at any gate**; no skill gained a row.
 - The grounding is in-repo trails, not field reports. The search was fixed-term, not a census. Effectiveness is unmeasured, and whether a row would fire cannot be tested in Core.
 - Stricter verdict rules now ship separately (next section). A second, independent reviewer is not built (re-open only on a new argument or observation, such as a recorded single-reviewer miss).
 
 ### Stricter verdicts: the anti-generosity standard (always on)
 
 Every `/peer-review` and `/demo-day` run hands the Reviewer or QA Tester [`standards/anti-generosity.md`](standards/anti-generosity.md); there is no opt-in or opt-out, and the report should name it as applied.
-- **This changes verdicts for already-installed projects.** Each item is PASS or FAIL with the observable that decided it; a check only read, simulated or partly run is recorded `⚠ not-verified-live`, never as a pass; a finding is not downgraded without a cited reason. Expect more `⚠` cells and stricter verdicts than before.
+- **This changes verdicts for already-installed projects.** Each item is PASS or FAIL with the observable that decided it; a check only read, simulated or partly run is recorded `⚠ not-verified-live`, never as a pass; the report states which evaluation mode was available; a finding is not downgraded without a cited reason. Expect more `⚠` cells and stricter verdicts than before.
 - **Prompt material only, effect unmeasured.** It makes a strict verdict likely, not certain; the skill tells you if a report does not name the standard. The live dry runs could not be performed in the build environment, so no observed rate is claimed ([`evidence.md`](.spark/adversarial-gates-standard/evidence.md)). Code enforcement is [`aspark-guard`](https://github.com/a-lottes/aSPARK-guard)'s concern; a second, independent reviewer is not built.
 - Silent in every other ceremony; `/go-live` is unaffected.
 

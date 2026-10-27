@@ -102,6 +102,10 @@ a well-meaning patch.
 
 ---
 
+## Adding a standard
+
+An always-on rule for agents is a file in [`standards/`](standards/anti-generosity.md), passed by literal path from the skills that claim it (no activation, no constitution setting). Keep it short, cite what grounds each rule, and say what is not grounded.
+
 ## Adding a lens
 
 The most self-contained way to contribute, and the reason `lenses/` exists as a
