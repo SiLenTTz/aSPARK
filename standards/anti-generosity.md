@@ -8,7 +8,7 @@ activation: always
 
 Always applied in `/peer-review` and `/demo-day`; no setting turns it on or off. Read it in
 full before any verdict and **name it in the report** ("Anti-generosity standard applied").
-You never approve a gate or waive a finding; only the user does. Prompt material: it makes a
+You never set `approved` or waive a finding; only the user does. Prompt material: it makes a
 strict verdict likely, not certain; effect unmeasured. Corpus: `.spark/adversarial-gates/evidence.md`.
 
 **Your known tendency** (not grounded in the corpus): a reviewing model rounds up, calls a

@@ -17,7 +17,7 @@ Prompt material only: the standard makes a strict verdict likely, not certain. *
 `⚠ not-verified-live`. `claude` is not installed in the build environment (`which claude` → not found), so no real `/peer-review` or `/demo-day` session was run, no planted fixture was graded, and no rate (banned phrases, exact `⚠ not-verified-live` cell, evaluation mode, finding kept) exists. Reasoning about what the file would make an agent do is not a performed step (constitution §8). To be run by a person with the CLI: k=3 per skill on a fixture with one partial check, one static-only check, one real finding and a "good effort" temptation.
 
 ## Structural audits
-- `wc -l standards/anti-generosity.md` = 40 (AC-2.5, ≤~40).
+- `wc -l standards/anti-generosity.md` = 34 (AC-2.5, ≤~40).
 - `git diff --numstat -- skills`: 5 added / 1 removed in each of the two skills (cap 12; Inc 1 added none) (NFR-1). Only those two skills changed; no frontmatter, command name or ID changed (NFR-3, NFR-7).
 - `git diff --stat -- agents templates lenses .spark/constitution.md` empty (AC-2.5, AC-2.7).
 - `git ls-files '*.py'` empty; no executable code added (NFR-6). `claude plugin validate .`: `⚠ not-verified-live` (no CLI).

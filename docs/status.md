@@ -271,7 +271,7 @@ was an explicit, informed shipping decision, not an oversight.
 
 | | |
 |---|---|
-| **Scope** | `standards/anti-generosity.md` (40 lines), passed by literal path in step 2 of `/peer-review` and `/demo-day` on every run, plus one line in each skill's present step ("tell the user if the report does not name it"). No agent, template or constitution change. Silent in all other ceremonies. |
+| **Scope** | `standards/anti-generosity.md` (34 lines), passed by literal path in step 2 of `/peer-review` and `/demo-day` on every run, plus one line in each skill's present step ("tell the user if the report does not name it"). No agent, template or constitution change. Silent in all other ceremonies. |
 | **Evidence** | [`.spark/adversarial-gates-standard/evidence.md`](../.spark/adversarial-gates-standard/evidence.md): negative baseline (no `standards/` reference before the edit), structural checks (line counts, diffs, grep of activation sites). **Live dry runs of both skills: `⚠ not-verified-live`** — no `claude` CLI in the build environment. |
 | **State** | **Shipped, unproven live.** Prompt material: likely, not certain; effect unmeasured, no rate observed. It changes verdict behaviour for installed projects (partial checks become `⚠ not-verified-live`). Gates remain prompt-enforced; code enforcement is `aspark-guard`'s. A second, independent reviewer is not built. |
 
