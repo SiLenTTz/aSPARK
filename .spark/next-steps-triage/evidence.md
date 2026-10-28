@@ -18,3 +18,5 @@ User rulings (review r2, relayed by the `/peer-review` caller): Q1 / review F1 k
 Rulings (autonomous, plan-time, superseded for Q1 by the user ruling above): Q1 keep the single "Could not see the tickets" line (issue AC-5 asks for it; exception to the constitution's silent fallback, flagged for `/charter`). Q2 emit the JSON only when `agent.yaml` exists or the caller asks.
 
 D1-D4 fixed: brief list extended, thin-brief step ref kept at step 6 after the new step became step 0, maturity step placed before ranking, unreachable tickets skip triage/gaps.
+
+F4 ruling (user, review r2): waive the missing `claude plugin validate .` run (CLI not installed in this environment); it is owed to the person reviewing the PR before release. ROADMAP carries a "Written, not yet Shipped" partial note.
