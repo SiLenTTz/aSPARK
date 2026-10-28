@@ -122,7 +122,7 @@ steer, not a fixed answer.
    "source": "constitution.md §x", "existing_issue": 42}`.
    `existing_issue` (integer) is optional and set only when `type` is
    `existing`; the Factory then labels and works that issue instead of
-   filing a duplicate. Omit it otherwise. (The Factory-side parsing lives in
+   filing a duplicate. Omit the key entirely otherwise (never `null`). (The Factory-side parsing lives in
    the aSPARK-Factory repo.)
 5. **Let the user decide.** They may: accept the recommendation as-is, ask
    for a different angle (re-invoke the agent with the steer), pick an

@@ -148,13 +148,15 @@ build, given where we actually are."
    project class (greenfield / building / mature) and, when reachable, the
    open issues and merged PRs. On **greenfield**, recommend foundation work
    (architecture decision or walking skeleton, layout, test harness and CI,
-   from the constitution's stack and quality bars) before any feature; reuse
-   an open foundation ticket. Otherwise an existing ready ticket (blockers
+   from the constitution's stack and quality bars) before any feature; if an open ticket already covers
+   any foundation piece (harness, CI, skeleton), recommend that ticket as
+   `existing #N` and never type a new `foundation` that would duplicate or
+   absorb it; type `foundation` only when no open ticket covers it. Otherwise an existing ready ticket (blockers
    closed, no merged PR) beats a new idea of the same size; a blocked ticket
    is never the pick while its blocker is open; an issue with a merged PR is
    "done, close it". Report constitution/ROADMAP/spec functions with no
    covering open or closed issue as gaps, each with its source section.
-   Type the recommendation `existing #N`, `gap` or `foundation`. If the brief
+   Type the recommendation `existing #N`, `gap` or `foundation`. In the JSON, omit `existing_issue` entirely unless the type is `existing` (never `null`). If the brief
    says the tickets were unreachable, propose as before and do not mention it yourself (the caller reports it once).
 1. **Read the brief, not just the idea.** The shipped list tells you the
    product's trajectory; the stalled list tells you where momentum died and
