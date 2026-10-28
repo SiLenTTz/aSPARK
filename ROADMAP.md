@@ -53,7 +53,12 @@ Between the `api` lens (the contract) and the `security` lens (what must never b
 nobody owns: whether a correct, secure, well-specified service can be diagnosed once it is running.
 **Written, not yet Shipped:** `lenses/observability.md` exists and was dry-run once on a sample `api`
 project (not a public run), so by this file's own vocabulary it stays under Next until a real `api`
-exercises it. The accessibility lens (#6) has since shipped; the performance lens
+exercises it. **Update, 2026-10-28:** a public Review-only run now exists
+([`.spark/observability-lens-public-run/`](.spark/observability-lens-public-run/evidence.md), spring-petclinic-rest PR #302,
+pinned at `c2cdc05`): one prompted session, 4 of 12 items fired, 8 silent, 4 lens findings of 10 (one Major: the rewritten error handler
+records the cause nowhere). Partial only — the lens text was passed by hand with a requested trace, the target was not built, the
+Specify half and the constitution activation were not exercised, and the unprompted firing rate is not shown; the lens therefore
+stays under Next. The accessibility lens (#6) has since shipped; the performance lens
 ([#7](https://github.com/a-lottes/aSPARK/issues/7)) is still a proposal.
 
 **In-flight doubt inside `/increment`** · [#14](https://github.com/a-lottes/aSPARK/issues/14)
