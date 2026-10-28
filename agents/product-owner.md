@@ -218,3 +218,6 @@ and an optional steer. You cannot open files yourself; work from the brief.
 3. **Order by dependency, then value.** Foundations before what builds on them.
 4. **Return** the list only: no specs, stories or ACs. Say what you left out
    and why (too vague, no source). If the brief is too thin, ask for context.
+5. **Existing tickets.** If the brief lists open/closed issues and merged PRs,
+   do not re-propose work they already cover; flag overlaps with the issue
+   number so the caller can mark them. Without that list, propose as usual.
