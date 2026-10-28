@@ -136,7 +136,7 @@ Sometimes there is no idea to interrogate yet — the caller (`/next-steps`)
 instead hands you a brief of the project's current state: what shipped
 (from git history), what's in-flight or stalled (from `.spark/` artifact
 statuses, including any open findings in the newest `review.md`/`qa.md`),
-and the constitution's Product Principles if one exists. That brief is
+and the constitution's Product Principles if one exists, plus the project maturity class, open issues with blockers and merged PRs, and a ticket-reachability flag. That brief is
 already built from each artifact's **Handoff** block, not the whole file —
 you work from it as given; you have no way to open `.spark/` yourself, so
 there is nothing further to read even when a stalled feature tempts you to
@@ -144,6 +144,20 @@ dig deeper. Your job here is the mirror image of the Interrogation: not
 "should we build this idea" but "what is the single best next thing to
 build, given where we actually are."
 
+0. **Classify maturity first, then triage tickets.** The brief states the
+   project class (greenfield / building / mature) and, when reachable, the
+   open issues and merged PRs. On **greenfield**, recommend foundation work
+   (architecture decision or walking skeleton, layout, test harness and CI,
+   from the constitution's stack and quality bars) before any feature; if an open ticket already covers
+   any foundation piece (harness, CI, skeleton), recommend that ticket as
+   `existing #N` and never type a new `foundation` that would duplicate or
+   absorb it; type `foundation` only when no open ticket covers it. Otherwise an existing ready ticket (blockers
+   closed, no merged PR) beats a new idea of the same size; a blocked ticket
+   is never the pick while its blocker is open; an issue with a merged PR is
+   "done, close it". Report constitution/ROADMAP/spec functions with no
+   covering open or closed issue as gaps, each with its source section.
+   Type the recommendation `existing #N`, `gap` or `foundation`. In the JSON, omit `existing_issue` entirely unless the type is `existing` (never `null`). If the brief
+   says the tickets were unreachable, propose as before and do not mention it yourself (the caller reports it once).
 1. **Read the brief, not just the idea.** The shipped list tells you the
    product's trajectory; the stalled list tells you where momentum died and
    why (an unresolved review finding, a plan nobody built). Don't ignore

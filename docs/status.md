@@ -285,6 +285,10 @@ was an explicit, informed shipping decision, not an oversight.
 
 ---
 
+## `/next-steps` ticket triage
+
+**Experimental, best-effort prompt material.** The product-owner agent was run once per fixture on written briefs (greenfield → `foundation`; blocked ticket → `existing #4`; covered vs uncovered function → only the uncovered one a gap; merged-PR issue → "done, close it"), 4 of 4 as expected, 1 session each, no rate beyond that. Not run: the no-ticket-access path (AC-5, read only), a live `gh` run, the Factory's parsing of `existing_issue` (other repo). Ledger: [`.spark/next-steps-triage/evidence.md`](../.spark/next-steps-triage/evidence.md)
+
 ## Build checklist
 
 - [x] Repo scaffold, plugin manifest, license

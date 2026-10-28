@@ -33,6 +33,17 @@ and on explicit confirmation files it as GitHub issues (each with a source
 reference and a `generation: 0` line) that `/story-time <n>` imports. Its source
 checks are prompt material, best-effort, not enforcement.
 
+`/next-steps` reads the open issues when `gh`/`glab` or a ticket MCP works,
+classifies the project (greenfield / building / mature), triages tickets and
+lists described-but-unticketed functions as gaps. Its first line types the
+recommendation `existing #N`, `gap` or `foundation`. For the Factory (when
+`agent.yaml` exists or the caller asks) it ends with one fenced `json` object
+with keys `type` (`existing|gap|foundation`), `title`, `summary`, `source`
+(strings) and the optional integer `existing_issue`, present only when `type`
+is `existing`; a missing or non-integer value means absent. Parsing lives in
+aSPARK-Factory; there is no version handshake. Best-effort prompt material,
+no measured rate yet.
+
 ## Context Budget: What Each Ceremony Reads
 
 Artifacts grow monotonically; a prompt does not. Every ceremony states what it
