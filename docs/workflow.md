@@ -44,6 +44,27 @@ is `existing`; a missing or non-integer value means absent. Parsing lives in
 aSPARK-Factory; there is no version handshake. Best-effort prompt material,
 no measured rate yet.
 
+`/peer-review`, `/demo-day` and `/go-live` end with the shared
+[`standards/open-findings.md`](../standards/open-findings.md) step: findings that
+stay open past the gate (open Major/Minor, `not-verified-live`, accepted risks,
+out-of-scope and other-repo follow-ups) become follow-up ticket proposals, merged
+by cause and checked against open issues (`covered by #N`). Interactively they
+are filed (`gh issue create --repo`, `generation` = parent + 1) only on an
+explicit yes. In the Factory they are not filed; the session's result JSON gets
+an optional `followups` array, present only when there is at least one:
+
+```json
+"followups": [
+  {"title": "...", "body": "one paragraph", "source": "review.md F3",
+   "parent": 113}
+]
+```
+
+`title`, `body`, `source` are strings; `parent` is the integer parent ticket
+(omitted when the spec's `Ticket` is `none`). A finding already covered is reported as `covered by #N` in the
+conversation and not emitted. Filing lives in aSPARK-Factory. Best-effort
+prompt material, no measured rate yet.
+
 ## Context Budget: What Each Ceremony Reads
 
 Artifacts grow monotonically; a prompt does not. Every ceremony states what it

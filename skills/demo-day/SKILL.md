@@ -107,6 +107,11 @@ user for it, and how to start the app if it isn't running.
    - Minor bugs → the user accepts them (recorded) or sends them to fix.
 6. **Close the gate.** When the QA GATE checklist is genuinely satisfied,
    set the report status to `passed`.
+7. **Open findings.** After the gate decision, run
+   `${CLAUDE_PLUGIN_ROOT}/standards/open-findings.md` (read it now; it is
+   conductor-side): propose follow-up tickets for bugs, `not-verified-live`
+   checks and accepted risks that stay open, file only on an explicit yes, and
+   say nothing when none are open.
 
 ## Rules
 

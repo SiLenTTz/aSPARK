@@ -81,7 +81,12 @@ Optional argument: the feature name. Resolve as usual.
    what we'd change, reusable patterns). Offer to persist the reusable
    patterns into the project's CLAUDE.md — with the user's consent, apply
    them.
-7. **Close the loop.** Release report status `released` (or `aborted` with
+7. **Open findings.** Run `${CLAUDE_PLUGIN_ROOT}/standards/open-findings.md`
+   over `review.md` and `qa.md` (read it now; it is conductor-side): findings
+   that shipped open become follow-up ticket proposals, filed only on an
+   explicit yes, nothing said when none are open. This is a separate question
+   from the publish go.
+8. **Close the loop.** Release report status `released` (or `aborted` with
    reason). Congratulate the team — the feature is done-done.
 
 ## Rules

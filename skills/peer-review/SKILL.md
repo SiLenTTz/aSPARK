@@ -70,6 +70,10 @@ Optional argument: the feature name. Resolve as usual.
    - Minors/Nits → user decides: fix now or accept.
 5. **Close the gate.** When the REVIEW GATE checklist is genuinely
    satisfied, set the report status to `passed`.
+6. **Open findings.** After the gate decision, run
+   `${CLAUDE_PLUGIN_ROOT}/standards/open-findings.md` (read it now; it is
+   conductor-side): propose follow-up tickets for findings that stay open,
+   file only on an explicit yes, and say nothing when none are open.
 
 ## Rules
 
