@@ -49,7 +49,7 @@ decide whether that ticket's content belongs there.
 
 1. **Name the feature.** Derive a short kebab-case feature name from the idea
    (e.g. `weekly-stats-dashboard`). If `.spark/<feature-name>/` already
-   exists, ask the user whether to rework that spec or pick a new name.
+   exists, ask the user whether to rework that spec or pick a new name. Exception: a bare issue number whose existing spec has a `Gate comment` URL is a **resume**, not a rework: skip steps 3-7 and continue at step 8 with *Ticket gate question* step 3.
 2. **Resolve active lenses.** The constitution is the single source of truth. If
    `.spark/constitution.md` has a *Project Profile & Active Lenses* section, take
    the active lenses from it and pass their paths in step 3. If there's **no
@@ -101,10 +101,41 @@ decide whether that ticket's content belongs there.
      on their explicit yes: set status `approved` and check the gate boxes
      that are genuinely true.
 
+### Ticket gate question (only when the spec was seeded from a ticket)
+
+Applies when the `Ticket` row names a real issue and step 8 needs a user
+decision (approval, or open questions). `Ticket` = `none`: skip this whole
+section, behaviour unchanged. Resolve `owner/repo` from `origin` as in
+*Input*, and always pass `--repo <owner/repo>`.
+
+1. **Post once.** Read the spec header's `Gate comment` row. If it holds a
+   comment URL, post **nothing** (a rerun never posts twice) and go to 3.
+   Otherwise run one `gh issue comment <n> --repo <owner/repo>` with: a
+   5-10 line spec summary, the open questions each with its recommended
+   option, and how to answer (reply in the issue, e.g. "approve, option B";
+   only write-access collaborators count). Record the returned comment URL
+   in the header's `Gate comment` row in the same edit. If `gh` fails, record
+   `Gate comment: skipped, <reason>` and carry on in the conversation only;
+   never retry in the same run.
+2. **Ask in the conversation as usual.** If no answer can come (autonomous
+   run, no one present), stop with the spec `draft` and the comment posted.
+3. **On resume, read the answer.** Run
+   `gh issue view <n> --repo <owner/repo> --json comments` and take comments
+   created **after** the gate comment, oldest first. For each author check
+   `gh api repos/<owner/repo>/collaborators/<login>/permission --jq .permission`;
+   only `admin`, `maintain` or `write` count. A comment from anyone else, or
+   a failed permission check, is **not** a decision: ignore it and say so.
+   The latest qualifying comment that approves or picks options is the gate
+   decision: fold chosen options into the spec, and record in the spec's
+   Clarifications table the quoted comment, its author and its link
+   (the gate record). Without a qualifying comment the gate stays open.
+   An approval still only sets `approved` per the Rules below.
+
 ## Rules
 
 - Never set `approved` without the user's explicit approval in this
-  conversation.
+  conversation — or, for a ticket-seeded spec, a qualifying ticket comment
+  from a user with write access (see *Ticket gate question*).
 - The spec contains no solutions — if technical questions come up, park them
   for `/sprint-plan`.
 
