@@ -72,8 +72,8 @@ steer, not a fixed answer.
      number,title,state,body,mergedAt,headRefName --limit 200`. Capture labels, "blocked
      by" / "depends on" / "#N" references, milestones and linked PRs. If no
      tool works, note once for the closing report: "Could not see the
-     tickets" (the project's own ticket #110 asks for this one line, a deliberate
-     exception to the constitution's silent-fallback rule) — then
+     tickets" (one line by design, aSPARK issue #110: a deliberate exception
+     to aSPARK's own silent-fallback rule, waived by its maintainer) — then
      **skip the maturity ticket count, triage and gap bullets below** (no
      issue list means every function would look like a gap) and behave as
      before this feature.

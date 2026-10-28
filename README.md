@@ -103,7 +103,7 @@ Review or QA findings go back to the Developer and the phase re-runs. After thre
 | Command | Role | What they do |
 |---|---|---|
 | `/charter` | 📜 Facilitator | Sets the project's standing principles and profile in `constitution.md`, once. |
-| `/next-steps` | 🧭 Product Owner | No idea in hand? Surveys the project, triages open tickets, finds ticket gaps and proposes one typed next step (foundation first on a new project). |
+| `/next-steps` | 🧭 Product Owner | No idea in hand? Surveys the project, triages open tickets, finds ticket gaps and proposes one typed next step (foundation first on a new project). Ticket triage is best effort, see [`docs/status.md`](docs/status.md#next-steps-ticket-triage). |
 | `/backlog` | 🧭 Product Owner | Documents but no backlog? Reads `docs/`, proposes an ordered list you edit, then files it as GitHub issues `/story-time <n>` can import. |
 | `/story-time` | 🧭 Product Owner | Interrogates your idea, no yes-man. Writes stories, ACs and NFRs into `spec.md`. Pass a GitHub issue number (`/story-time 42`) to start from that ticket instead of retyping it. |
 | `/look-and-feel` | 🎨 Designer | Usability heuristics, consistency, accessibility. Adds a design section to the spec. |

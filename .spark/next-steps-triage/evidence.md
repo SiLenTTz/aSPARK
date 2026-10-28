@@ -11,6 +11,10 @@ Reduced run versus plan T2-T4 (autonomous line, no remote, no `gh`): **1 session
 
 Not run: T2 (real `/next-steps` with no tickets, AC-5), T4 (live run), skill-level brief gathering. AC-5 is verified by reading only (`skills/next-steps/SKILL.md`, ticket bullet). AC-6: field defined in SKILL.md step 4 and `docs/workflow.md`; the Factory's `proposals.py` is in another repo and was not tested.
 
-Rulings (autonomous, plan-time): Q1 keep the single "Could not see the tickets" line (issue AC-5 asks for it; exception to the constitution's silent fallback, flagged for `/charter`). Q2 emit the JSON only when `agent.yaml` exists or the caller asks.
+Prompt version: these four sessions ran before commit `6b10800`, i.e. before the review r1 edits to `agents/product-owner.md` (propose-mode intro, F10; unreachable-tickets line in step 0, F7). Neither edit touches a path these fixtures exercised; they were not re-run.
+
+User rulings (review r2, relayed by the `/peer-review` caller): Q1 / review F1 kept: the user waives constitution §6 silent fallback for this one line, reason "issue #110 asks for it". Review F3 waived: 1 session per fixture, no-ticket and live paths not run, disclosed here, in `docs/status.md` and `spec.md`. Q2 stays an agent ruling; it picked the §6-conformant option, so no waiver is involved.
+
+Rulings (autonomous, plan-time, superseded for Q1 by the user ruling above): Q1 keep the single "Could not see the tickets" line (issue AC-5 asks for it; exception to the constitution's silent fallback, flagged for `/charter`). Q2 emit the JSON only when `agent.yaml` exists or the caller asks.
 
 D1-D4 fixed: brief list extended, thin-brief step ref kept at step 6 after the new step became step 0, maturity step placed before ranking, unreachable tickets skip triage/gaps.

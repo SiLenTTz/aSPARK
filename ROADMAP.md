@@ -28,6 +28,8 @@ is worth more than a patch. Reports where it went badly are worth the most.
 
 ---
 
+**Written, not yet Shipped:** `/next-steps` ticket triage, gap finding and typed recommendation (issue #110) exist in `skills/next-steps/SKILL.md` and `agents/product-owner.md`, exercised only as 4 single product-owner sessions on written fixtures (`docs/status.md`); the no-ticket path and a live `gh` run are unrun, so it stays here, **partial**, until they are.
+
 ## Shipped
 
 | | |
