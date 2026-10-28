@@ -35,7 +35,11 @@ Optional argument: the feature name. Resolve as usual.
    status, posts one status comment to the issue named in the feature's
    `spec.md` header `Ticket` row — absent or `none` means zero tracker calls
    and zero mention anywhere in the release plan or report, identical to
-   today, never a lighter special case of the same behavior. A `Ticket` row
+   today, never a lighter special case of the same behavior. In `pr` mode a real `Ticket` also gets a closing keyword in the PR
+   description (`Closes #n`, or `Refs #n` when the release is partial) and the
+   terminal comment opens with a one-line outcome, noting when the PR base is
+   not the default branch (the issue won't auto-close); the keyword and why go
+   in `release.md` §3. A `Ticket` row
    of `none` means there is nothing to write back to, regardless of the
    declaration. Its `QA Method` section (§8),
    when complete, tells the agent how to word §1's QA row: the row still requires
