@@ -205,7 +205,7 @@ The lens layer's own spec defines success as **a UI-lens firing and being
 QA-verified on a real `website`**, *and* **a Review-lens firing and being
 Review-verified on a real `api`** — both under the same `NFR-n`.
 
-Neither has been demonstrated by a public, checkable full loop run yet.
+The `website` half has one **partial** public run (2026-10-28): the `accessibility` lens, activated from a declared constitution profile, run through Review and verified live in a browser on StartBootstrap Agency at a pinned commit — [`.spark/website-lens-public-run/evidence.md`](../.spark/website-lens-public-run/evidence.md). Not shown: a rate (n = 1, one model), an independent profile author (the profile was assumed by the run), Specify/Design/Act, assistive-technology testing. The `api` half is not demonstrated on `main`. Neither half is a closed proof.
 
 **Standing caveat:** lens compliance is instruction-driven. No test enforces that a
 lens actually fired, and none can. A field report from someone else's project is

@@ -40,9 +40,9 @@
 |---|---|---|---|---|---|---|
 | T1 | Clone, pin, write and install the target constitution, serve `dist/` | US-1, US-2 | done | `curl`-free HTTP 200 check on `http://127.0.0.1:8766/`; constitution copied | AC-1, AC-2 | none |
 | T2 | `/peer-review` via `reviewer` with the lens resolved from the constitution; no trace request | US-2, US-3 | done | `review.md` written by the agent | AC-2, AC-3 | T1 |
-| T3 | `/demo-day` via `qa-tester` in the browser with the lens resolved the same way | US-4 | todo | `qa.md` with PASS/FAIL + observable per lens check | AC-4, NFR-1, NFR-2 | T2 |
-| T4 | `evidence.md`: target, activation, firing, live checks, not shown, misfires | US-1…US-5 | todo | Citations re-resolved at the pinned commit | AC-1…AC-5 | T3 |
-| T5 | Update `ROADMAP.md` and `docs/status.md` to the result only | US-5 | todo | Wording matches evidence | AC-5, AC-6, NFR-4 | T4 |
+| T3 | `/demo-day` via `qa-tester` in the browser with the lens resolved the same way | US-4 | done | `qa.md` with PASS/FAIL + observable per lens check | AC-4, NFR-1, NFR-2 | T2 |
+| T4 | `evidence.md`: target, activation, firing, live checks, not shown, misfires | US-1…US-5 | done | Citations re-resolved at the pinned commit | AC-1…AC-5 | T3 |
+| T5 | Update `ROADMAP.md` and `docs/status.md` to the result only | US-5 | done | Wording matches evidence | AC-5, AC-6, NFR-4 | T4 |
 
 ## 4. Test Strategy
 
