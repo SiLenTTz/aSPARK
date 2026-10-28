@@ -16,4 +16,4 @@
 AC-1..AC-6 as in issue #110. AC-6's Factory side (`proposals.py`) is outside this repo; this repo only defines the field.
 
 ## Disclosure
-This is prompt material: the checks make the behaviour likely, not certain. No fixture sessions were run in this loop, so no pass rate is claimed; review.md and qa.md are intentionally not written as `passed`.
+This is prompt material: the checks make the behaviour likely, not certain. Four fixture sessions (1 each) ran on the product-owner agent, all as expected; the no-ticket path and a live run did not. No pass rate is claimed. The unreachable-tickets line follows issue #110 (AC-5) although the constitution §6 says silent fallback; only the user can waive that.

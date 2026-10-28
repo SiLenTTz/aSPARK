@@ -69,11 +69,11 @@ steer, not a fixed answer.
    - **Ticket system (best effort).** Try `gh issue list --state all --json
      number,title,state,labels,milestone,body,closedAt --limit 200` (or `glab
      issue list`, or a ticket MCP) and `gh pr list --state all --json
-     number,title,state,body,mergedAt,headRefName`. Capture labels, "blocked
+     number,title,state,body,mergedAt,headRefName --limit 200`. Capture labels, "blocked
      by" / "depends on" / "#N" references, milestones and linked PRs. If no
      tool works, note once for the closing report: "Could not see the
-     tickets" (AC-5; the issue asks for this one line, a deliberate exception
-     to the constitution's silent-fallback rule, ruled at plan time) — then
+     tickets" (the project's own ticket #110 asks for this one line, a deliberate
+     exception to the constitution's silent-fallback rule) — then
      **skip the maturity ticket count, triage and gap bullets below** (no
      issue list means every function would look like a gap) and behave as
      before this feature.
@@ -111,10 +111,12 @@ steer, not a fixed answer.
    `existing #N`, `gap` (new ticket, with `source`) or `foundation`. Then list
    up to two alternatives, then the remaining gaps as a short list (each with
    its source), then any "done, close it" issues. If the tickets were not
-   reachable, say so once in this closing report.
+   reachable, say so once, here in this closing report and nowhere else. If
+   the issue list loaded but the PR list did not, say that merged PRs could
+   not be checked.
    **Machine-readable block for the Factory.** Only when `agent.yaml` exists
    in the repo or the caller asks for it (a plain interactive run stays
-   free of it, ruled at plan time): end the report with one JSON
+   free of it): end the report with one JSON
    object in a fenced `json` block:
    `{"type": "existing|gap|foundation", "title": "...", "summary": "...",
    "source": "constitution.md §x", "existing_issue": 42}`.

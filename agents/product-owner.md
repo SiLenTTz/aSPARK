@@ -136,7 +136,7 @@ Sometimes there is no idea to interrogate yet — the caller (`/next-steps`)
 instead hands you a brief of the project's current state: what shipped
 (from git history), what's in-flight or stalled (from `.spark/` artifact
 statuses, including any open findings in the newest `review.md`/`qa.md`),
-and the constitution's Product Principles if one exists. That brief is
+and the constitution's Product Principles if one exists, plus the project maturity class, open issues with blockers and merged PRs, and a ticket-reachability flag. That brief is
 already built from each artifact's **Handoff** block, not the whole file —
 you work from it as given; you have no way to open `.spark/` yourself, so
 there is nothing further to read even when a stalled feature tempts you to
@@ -155,7 +155,7 @@ build, given where we actually are."
    "done, close it". Report constitution/ROADMAP/spec functions with no
    covering open or closed issue as gaps, each with its source section.
    Type the recommendation `existing #N`, `gap` or `foundation`. If the brief
-   says the tickets were unreachable, propose as before and say so once.
+   says the tickets were unreachable, propose as before and do not mention it yourself (the caller reports it once).
 1. **Read the brief, not just the idea.** The shipped list tells you the
    product's trajectory; the stalled list tells you where momentum died and
    why (an unresolved review finding, a plan nobody built). Don't ignore
