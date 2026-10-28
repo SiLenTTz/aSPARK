@@ -63,6 +63,7 @@
 | Version bump & tag | |
 | PR / merge | |
 | Deploy | |
+| Ticket keyword | <!-- `pr` mode with a real Ticket only: `Closes #n` or `Refs #n`, and why --> |
 | Post-release smoke check | |
 
 ## 4. Learnings (Keep!)

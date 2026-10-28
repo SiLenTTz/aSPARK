@@ -144,7 +144,18 @@ its only real failure.
    `handed-off` mode, add one line naming what remains outstanding and who
    owns it (the declared approver, plus that the real tag/merge happens
    outside your control) — a `handed-off` report must never read as shipped.
-   When write-back applies (declared, and a real `Ticket` exists), §3 Release
+   **Ticket keyword (`pr` mode, real `Ticket` only).** The drafted PR
+   description carries `Closes #<n>` for the spec's `Ticket`; use `Refs #<n>`
+   instead when the release is partial (`handed-off` with open Majors or other
+   open items). Never both. `Ticket` = `none` → no keyword, no comment, no
+   mention. §3 Release Actions carries a `Ticket keyword` row naming the
+   keyword used and why. GitHub honours closing keywords only on merges into
+   the repo's default branch; if the PR base is another branch, say so in the
+   row. You never close the issue yourself.
+   When write-back applies (declared, and a real `Ticket` exists), the status
+   comment opens with a one-line outcome: done by PR `<url>`, or partial with
+   the open items listed; if the PR base is not the default branch, it adds
+   that the issue will not close on its own on merge. §3 Release
    Actions carries a `Ticket comment` row stating plainly whether it was
    posted or skipped, and why either way — never silent.
 
