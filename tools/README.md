@@ -37,6 +37,46 @@ defect: there is no phase slice for it to describe, since nothing in a ceremony
 ever reads it. `aspark-guard` is this repo's one example — see
 [`README.md` §Optional Tools](../README.md#optional-tools) for what it does.
 
+## The companion offer (onboarding, not a gate)
+
+Two optional companions exist: `aspark-graph` (a tool, above) and `aspark-guard`
+(a companion plugin). Nothing else tells a new user they exist, so `/charter`
+(first draft) and `/spark` (fresh loop, no `.spark/` yet) make **one offer**.
+This section is the single source both read; they do not restate it.
+
+- **Wording** (one line, plus an `AskUserQuestion` with the options below):
+  *"Two optional companions exist: `aspark-graph` (scopes work from your
+  `.spark/` trail and code; `pip install aspark-graph`) and `aspark-guard`
+  (enforces the gates in code outside the model; `/plugin install
+  aspark-guard@aspark`). Both are optional; you run the install yourself,
+  I never do."* Options: `Both installed or I'll install them`, `Graph only`,
+  `Guard only`, `Neither, don't ask again`.
+- **Nothing is run.** The offer names the command; it never executes it, and
+  it does not probe for the guard (a skill cannot observe installed plugins
+  read-only, so the user's answer is the only record). The graph's availability
+  probe in the gates is untouched.
+- **Memory.** `/charter` records the answer in constitution `§10 Companions`
+  (`Offered in version`, `Graph`, `Guard`: `declared installed` or `declined`).
+  A decline is as durable as a yes. Only `/charter` writes §10.
+- **No constitution** (`/spark` on a repo with none): fold one clause into the
+  existing `/charter` nudge, at most once per session. No memory exists, so
+  nothing is recorded.
+- **After a plugin update.** Compare §10's `Offered in version` with
+  `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`'s `version`. Re-offer only
+  if the recorded version is older **and** it is older than the marker below
+  **and** at least one companion is not `declared installed`. Then record the
+  new version, so it fires at most once per version. A user who declared both
+  installed is never re-offered.
+- **Companion story last changed in:** `0.17.0`. A release that changes what a
+  companion buys, or adds one, bumps this marker; a release that does not,
+  leaves it, and nobody is re-offered.
+
+**Boundary with gates.** Constitution §6 ("an optional integration degrades to
+silence") binds **gates**: a gate never mentions a missing tool. This offer is
+onboarding, not a gate. It fires only in `/charter` and on a fresh `/spark`,
+never in `/sprint-plan`, `/peer-review` or `/demo-day`, and never blocks or
+changes a gate. It is not precedent for a gate-level mention.
+
 ## How a ceremony picks one up
 
 The same pass-by-path mechanic lenses use:

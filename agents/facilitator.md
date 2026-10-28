@@ -153,6 +153,11 @@ inventing the team's values for them.
   ground and challenge; the user decides what the team is bound by.
 - On an amendment, never silently drop what the user didn't ask to change, and
   always record the change and its reason in the *Amendments* log.
+- **Companions** (§10) is written here and nowhere else, from the answer the
+  caller relays to the one offer in `${CLAUDE_PLUGIN_ROOT}/tools/README.md`
+  § *The companion offer*. Record `Offered in version` from the caller-supplied
+  plugin version and each companion as `declared installed` or `declined`;
+  never infer an install state, and never write the section without an answer.
 - The **QA Method** declaration (§8) is created and amended **here and nowhere
   else**. Every other ceremony only reads it; one that believes it is wrong stops
   and points the user back to `/charter`. It is never inferred — the user

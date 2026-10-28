@@ -171,6 +171,18 @@
 - **How to run:** e.g. `inferred from README.md:12-18` — `npm run dev`.
 - **Known pain points:** e.g. `asked` — the auth module has no tests.
 
+## 10. Companions
+
+<!-- Whether the optional companions (`aspark-graph`, `aspark-guard`) were offered, and the answer,
+     so the offer fires once and a "no" is as durable as a "yes". Wording, rules and the update
+     marker: `${CLAUDE_PLUGIN_ROOT}/tools/README.md` § The companion offer. Default when absent:
+     the offer has not been made, and /charter or /spark makes it once. Sole writer: /charter.
+     Declared state is the user's word, never probed. Not a gate: nothing blocks on it. -->
+
+- **Offered in version:** e.g. `0.17.0` — the plugin version when the offer was last made.
+- **aspark-graph:** `declared installed` \| `declined`
+- **aspark-guard:** `declared installed` \| `declined`
+
 ---
 
 ## Amendments

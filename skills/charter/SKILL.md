@@ -69,6 +69,10 @@ one.
    `inferred from <file:line>` / `asked` / `confirmed by user` / `not stated` /
    `not found` so the user can confirm or correct in one pass alongside the
    profile and QA method.
+   On a **first draft**, or on an amendment where §10 is absent or the update
+   rule in `${CLAUDE_PLUGIN_ROOT}/tools/README.md` § *The companion offer*
+   applies, read `version` from `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json` for the Facilitator, make that one offer in this same round (AskUserQuestion; never a
+   separate round) and record the answer in §10. Never run an install.
 4. **Iterate.** Fold the user's edits back in via the agent until they're
    satisfied. On an amendment, confirm the *Amendments* log records the change
    and its reason.

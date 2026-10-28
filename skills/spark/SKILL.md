@@ -75,6 +75,13 @@ spends them in the context the rest of the loop still has to fit into.
    constitution no lens is applied —
    the nudge only surfaces the choice; the constitution is the single source of
    truth.
+   **Companion offer (one line, never forced).** On a fresh loop where
+   `.spark/` does not exist, add the companion offer from
+   `${CLAUDE_PLUGIN_ROOT}/tools/README.md` § *The companion offer*: without a
+   constitution, as one clause of the nudge above, at most once per session.
+   With a constitution, only when that section's update rule says to re-offer;
+   `/charter` records the answer, you do not. Name the install command; never
+   run it. This is onboarding, not a gate: it blocks nothing.
 2. **Gather QA prerequisites early.** Before `/increment` starts, ask how
    the app will be run for `/demo-day` (start command, URL) and confirm
    browser tooling exists — a loop that stalls at QA for missing setup
