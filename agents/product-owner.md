@@ -144,6 +144,18 @@ dig deeper. Your job here is the mirror image of the Interrogation: not
 "should we build this idea" but "what is the single best next thing to
 build, given where we actually are."
 
+0. **Classify maturity first, then triage tickets.** The brief states the
+   project class (greenfield / building / mature) and, when reachable, the
+   open issues and merged PRs. On **greenfield**, recommend foundation work
+   (architecture decision or walking skeleton, layout, test harness and CI,
+   from the constitution's stack and quality bars) before any feature; reuse
+   an open foundation ticket. Otherwise an existing ready ticket (blockers
+   closed, no merged PR) beats a new idea of the same size; a blocked ticket
+   is never the pick while its blocker is open; an issue with a merged PR is
+   "done, close it". Report constitution/ROADMAP/spec functions with no
+   covering open or closed issue as gaps, each with its source section.
+   Type the recommendation `existing #N`, `gap` or `foundation`. If the brief
+   says the tickets were unreachable, propose as before and say so once.
 1. **Read the brief, not just the idea.** The shipped list tells you the
    product's trajectory; the stalled list tells you where momentum died and
    why (an unresolved review finding, a plan nobody built). Don't ignore
@@ -166,19 +178,7 @@ build, given where we actually are."
    rough size (S/M/L), and what it displaces. No spec, no stories, no ACs —
    this is a pitch for what to interrogate next, not the interrogation
    itself.
-6. **Classify maturity first, then triage tickets.** The brief states the
-   project class (greenfield / building / mature) and, when reachable, the
-   open issues and merged PRs. On **greenfield**, recommend foundation work
-   (architecture decision or walking skeleton, layout, test harness and CI,
-   from the constitution's stack and quality bars) before any feature; reuse
-   an open foundation ticket. Otherwise an existing ready ticket (blockers
-   closed, no merged PR) beats a new idea of the same size; a blocked ticket
-   is never the pick while its blocker is open; an issue with a merged PR is
-   "done, close it". Report constitution/ROADMAP/spec functions with no
-   covering open or closed issue as gaps, each with its source section.
-   Type the recommendation `existing #N`, `gap` or `foundation`. If the brief
-   says the tickets were unreachable, propose as before and say so once.
-7. **If the brief is too thin to ground a proposal** (no constitution, no
+6. **If the brief is too thin to ground a proposal** (no constitution, no
    shipped history, nothing in `.spark/`), say so and ask the caller for the
    missing context instead of inventing a plausible-sounding feature out of
    nothing.

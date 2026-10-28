@@ -72,7 +72,11 @@ steer, not a fixed answer.
      number,title,state,body,mergedAt,headRefName`. Capture labels, "blocked
      by" / "depends on" / "#N" references, milestones and linked PRs. If no
      tool works, note once for the closing report: "Could not see the
-     tickets" — then behave exactly as without this bullet (AC-5).
+     tickets" (AC-5; the issue asks for this one line, a deliberate exception
+     to the constitution's silent-fallback rule, ruled at plan time) — then
+     **skip the maturity ticket count, triage and gap bullets below** (no
+     issue list means every function would look like a gap) and behave as
+     before this feature.
    - **Project maturity.** Classify as **greenfield** (a constitution exists,
      little or no code, few or no tickets), **building** or **mature**, from
      `git ls-files` size, `git log` depth, `.spark/` history and ticket count.
@@ -91,8 +95,10 @@ steer, not a fixed answer.
 2. **Delegate to the Product Owner.** Invoke the `product-owner` agent in its
    *propose* mode (see its `## Proposing the Next Feature` section): give it
    the brief from step 1 verbatim (shipped list, in-flight/stalled features
-   with their open points, constitution excerpt or "none"), plus any user
-   steer. Point it at `.spark/constitution.md` if present.
+   with their open points, constitution excerpt or "none", the project
+   maturity class with its evidence, the open issues with their blockers and
+   linked PRs, the "done, close it" list, the gap list with sources, and
+   whether the tickets were reachable), plus any user steer. Point it at `.spark/constitution.md` if present.
 3. **Relay, don't guess.** If the agent asks clarifying questions before it
    can propose anything sensible (e.g. the constitution is missing and the
    product's purpose is unclear), put them to the user, then re-invoke with
@@ -106,7 +112,9 @@ steer, not a fixed answer.
    up to two alternatives, then the remaining gaps as a short list (each with
    its source), then any "done, close it" issues. If the tickets were not
    reachable, say so once in this closing report.
-   **Machine-readable block for the Factory.** End the report with one JSON
+   **Machine-readable block for the Factory.** Only when `agent.yaml` exists
+   in the repo or the caller asks for it (a plain interactive run stays
+   free of it, ruled at plan time): end the report with one JSON
    object in a fenced `json` block:
    `{"type": "existing|gap|foundation", "title": "...", "summary": "...",
    "source": "constitution.md §x", "existing_issue": 42}`.
