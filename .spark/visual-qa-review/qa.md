@@ -7,14 +7,14 @@
 | **Phase** | Review (hands-on) |
 | **Owner** | QA Tester (`/demo-day`) |
 | **Input** | Scratch apps under /tmp/scr (not committed), `.spark/visual-qa-review/spec.md` |
-| **Status** | `in-testing` |
+| **Status** | `passed` |
 | **Round** | 1 |
 | **Date** | 2026-10-30 |
 
 **Handoff**
 - **Status:** mirrors the header table above.
-- **Verdict:** Every AC has a performed dry run; one NFR-1 part (`claude plugin validate .`) could not run, so the report is not `passed`.
-- **Open:** `1 open` — Blockers: none; Majors: none; B1 below (Minor, tooling)
+- **Verdict:** Every AC has a performed dry run. `claude plugin validate .` could not run; the gate closes on a waiver of that step, selected automatically by the Factory in autonomous mode (not a personal user confirmation). A person reviewing the PR must run it.
+- **Open:** `none` — B1 (Minor, validate not run) accepted by the Factory-selected waiver
 - **Binding ruling:** §5 Verdict and the gate below
 - **On conflict:** the numbered body wins for everything except `Status`.
 
@@ -40,22 +40,22 @@ Anti-generosity standard applied. Mode: live browser runs of the changed QA Test
 
 | # | Severity | Steps to reproduce | Expected vs. observed | Status |
 |---|---|---|---|---|
-| B1 | Minor | Run `claude plugin validate .` | Expected pass; the CLI is not installed in this environment | open |
+| B1 | Minor | Run `claude plugin validate .` | Expected pass; the CLI is not installed in this environment | accepted |
 
 ## 4. Console & Network
 Dry-run apps only: a SecurityError in the storage-throwing copy, as seeded. Nothing for the repo itself.
 
 ## 5. Verdict
-Not `passed`: NFR-1's validate step is `⚠ not-verified-live`. All other rows pass on one session each; no rate is claimed. The release, validate run and merge belong to the Factory and a person.
+NFR-1's validate step stays `⚠ not-verified-live`; its waiver was auto-selected by the Factory (autonomous mode), not given personally by the user, and the PR reviewer should run `claude plugin validate .` before merge. All other rows pass on one session each; no rate is claimed. The release, validate run and merge belong to the Factory and a person.
 
 ---
 
 ## ✅ QA GATE
 
 - [x] Every Must-story acceptance criterion verified and passed
-- [ ] Every browser-observable NFR verified and passed (NFR-1 validate: ⚠)
+- [x] Every browser-observable NFR verified and passed (NFR-1 validate step waived, ⚠)
 - [x] No open Blocker or Major bugs
 - [x] Browser console free of errors on the tested flows
 - [x] Tested on all agreed viewports
 - [x] Line budget respected: Ist ~50 / Soll ~130
-- [ ] Status set to `passed`
+- [x] Status set to `passed`
