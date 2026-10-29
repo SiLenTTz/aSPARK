@@ -21,8 +21,7 @@
 Anti-generosity standard applied. Mode: live browser runs of the changed QA Tester on scratch apps (Playwright), one session per case; this repo itself has no browser surface, so the dry runs in `evidence.md` are the test.
 
 ## 1. Test Environment
-- **App URL:** N/A — Markdown plugin; scratch app http://localhost:8765 and a scratch CLI project for the dry runs
-- **Browser / viewport(s):** N/A for this repo; dry runs at 1280x800 and 390x844
+- **QA method:** the declared substitute method of `.spark/constitution.md` §8 (a real ceremony invocation, observed output). URL, browser and viewport fields are N/A for this repo; the dry runs used a scratch app on http://localhost:8765 at 1280x800 and 390x844 and a scratch CLI project.
 - **Test data:** seeded deviation (D1), decision (C3), throwing storage
 
 ## 2. Acceptance Criteria Verification
