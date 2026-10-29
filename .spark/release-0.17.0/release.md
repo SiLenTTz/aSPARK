@@ -11,7 +11,7 @@
 | **Version** | v0.17.0 |
 | **Date** | 2026-10-29 |
 | **Commit** | release commit on `factory/release-0.17.0`, on top of `6ecf293` (PR #122, carry-over of #44, #91, #105); tag `v0.17.0` is made on the merge commit after the merge |
-| **PR** | opened from `factory/release-0.17.0` into `main` |
+| **PR** | https://github.com/a-lottes/aSPARK/pull/123 |
 
 **Handoff**
 - **Status:** mirrors the header table above (authoritative for `Status` and `Version`).
