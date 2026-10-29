@@ -17,7 +17,7 @@ documented `partial`.
 
 Adoption figures and their source: [`docs/status.md` § Adoption](docs/status.md#adoption--snapshot-2026-09-30). Public, checkable evidence is the gap now; the [aSPARK reads](https://aspark.lottes.dev/en/blog/aspark-reads-flask/) series is one way it gets closed, field reports are the other. The lens layer was dogfooded on aSPARK itself and dry-run on two
 sample apps, but its own spec defines success as a UI lens firing and being QA-verified on a real
-`website` **and** a Review lens firing and being Review-verified on a real `api`. The `website` half now has one **partial** public run (2026-10-28, StartBootstrap Agency at a pinned commit, the `accessibility` lens activated from a declared constitution profile and QA-verified live in a browser; one run, one model, an assumed profile, an orchestrator-run dispatch, no screen reader): [`.spark/website-lens-public-run/evidence.md`](.spark/website-lens-public-run/evidence.md). It is not a rate and not a closed proof. The `api` half has no run on `main` yet.
+`website` **and** a Review lens firing and being Review-verified on a real `api`. The `website` half now has one **partial** public run (2026-10-28, StartBootstrap Agency at a pinned commit, the `accessibility` lens activated from a declared constitution profile and QA-verified live in a browser; one run, one model, an assumed profile, an orchestrator-run dispatch, no screen reader): [`.spark/website-lens-public-run/evidence.md`](.spark/website-lens-public-run/evidence.md). It is not a rate and not a closed proof. The `api` half has one **partial** Review-only run (2026-10-26, spring-petclinic-rest PR #329 at `7690a61`): [`.spark/api-lens-public-run/`](.spark/api-lens-public-run/evidence.md). The lens text was passed by hand and a per-item trace was requested, so lens *activation* from a constitution and an unprompted firing rate are not shown; the target was not built, so two checks stay not-verified-live. **Second `website` run (2026-10-27):** on 11ty/eleventy-base-blog at `cf0cc1f`, built (`npm ci && npm run build`) and browser-verified, the constitution was written by `/charter` (Facilitator agent, dark mode, no person confirmed it) and put `seo`, `ux` and `security` on; they were dispatched by their `phases` fields, fired in Specify and QA (`ux` correctly silent in Review), with no per-item trace requested; trail in [`.spark/website-lens-seo-ux-run/`](.spark/website-lens-seo-ux-run/evidence.md). Misses are recorded (Review missed a failing code-block focus case that QA found; the spec was wrong about headers). Still not shown: a firing rate (n=1, one model), a lens-free control, Design and Act, an interactive site for `ux`, and a person confirming the profile.
 
 There is a standing caveat behind it: lens compliance is instruction-driven. **No test enforces that a
 lens actually fired** — only a person running the loop can tell us whether it did, and whether it was
@@ -74,11 +74,16 @@ phase longer; if it cannot be kept cheap and rare, it should not ship.
 ## Blocked
 
 **A template version handshake** · `template-version-marker`
-Artifacts shaped by `templates/` are parsed by [`aspark-graph`](https://github.com/a-lottes/aSPARK-graph),
-which pins a supported template version — but no template carries a version marker, so drift surfaces as
-a structural guess rather than a named version conflict. Adding the marker here is a harmless comment
-until the consuming side reads it. **Both repos ship it together or neither does**, otherwise the result
-is a marker nobody reads.
+Artifacts shaped by `templates/` are parsed outside this repo by two consumers, on a contract with
+three repos in all (Core plus both):
+[`aspark-graph`](https://github.com/a-lottes/aSPARK-graph), which pins `SUPPORTED_TEMPLATE`, and
+[`aspark-guard`](https://github.com/a-lottes/aSPARK-guard), which re-encodes the same structures a
+second time (story heading, AC line, findings-table columns, `Status` header row) and checks them at
+write time. That write-time check is a second structural guess, not a handshake.
+**Core's side is shipped:** every template carries `<!-- aspark-template: aspark/0.1.0 -->`. Still open,
+in the consuming repos: `aspark-graph` asserting it (replacing its structural guess with a named version
+conflict) and `aspark-guard` reading it instead of its own copy. Until both do, the marker is read by
+nobody; the rule stands that all repos ship the reading side together.
 
 **Machine-readable release evidence** · `release-evidence`
 Turning release notes into a real `Release` node with a date and a commit, so delivery metrics become

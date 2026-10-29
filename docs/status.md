@@ -205,7 +205,7 @@ The lens layer's own spec defines success as **a UI-lens firing and being
 QA-verified on a real `website`**, *and* **a Review-lens firing and being
 Review-verified on a real `api`** — both under the same `NFR-n`.
 
-The `website` half has one **partial** public run (2026-10-28): the `accessibility` lens, activated from a declared constitution profile, run through Review and verified live in a browser on StartBootstrap Agency at a pinned commit — [`.spark/website-lens-public-run/evidence.md`](../.spark/website-lens-public-run/evidence.md). Not shown: a rate (n = 1, one model), an independent profile author (the profile was assumed by the run), Specify/Design/Act, assistive-technology testing. The `api` half is not demonstrated on `main`. Neither half is a closed proof.
+The `website` half has two **partial** public runs. The first (2026-10-28): the `accessibility` lens, activated from a declared constitution profile, run through Review and verified live in a browser on StartBootstrap Agency at a pinned commit — [`.spark/website-lens-public-run/evidence.md`](../.spark/website-lens-public-run/evidence.md). Not shown: a rate (n = 1, one model), an independent profile author (the profile was assumed by the run), Specify/Design/Act, assistive-technology testing. The second (2026-10-27, [`.spark/website-lens-seo-ux-run/`](../.spark/website-lens-seo-ux-run/evidence.md)) activated `seo`, `ux` and `security` from a constitution written by `/charter` on 11ty/eleventy-base-blog at `cf0cc1f`, ran Specify, Review and live-browser QA on a production build, and recorded its misfires and misses; still n=1, no lens-free control, no Design or Act, profile not confirmed by a person. The `api` half has one partial Review-only run (spring-petclinic-rest PR #329, lens passed by hand, trace requested; [`.spark/api-lens-public-run/`](../.spark/api-lens-public-run/evidence.md)). Neither half is a closed proof.
 
 **Standing caveat:** lens compliance is instruction-driven. No test enforces that a
 lens actually fired, and none can. A field report from someone else's project is
@@ -306,4 +306,4 @@ was an explicit, informed shipping decision, not an oversight.
 - [x] Spec-driven dry run on a sample project (`quicknote`)
 - [x] `tracker-handoff`'s positive case proven on this repo's own release
 - [x] Lean artifacts — a Handoff block in all five templates plus reading/writing rules in every consumer; see *Lean artifacts* above
-- [ ] **Success signal proven on real projects** — see *The open gap* above
+- [ ] **Success signal proven on real projects** — three partial public runs (`api` Review-only, `website` Review + live QA twice, the second with `/charter` and Specify), none a full loop; see *The open gap* above
